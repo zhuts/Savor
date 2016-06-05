@@ -75,8 +75,7 @@
       </div>
     </md-toolbar> -->
 
-  <h1 id="username">{{user.profile.nickname}}</h1>
-  <div id="userphoto"><img src="images/avatar.png" alt="rest1"></div>
+  <div class="md-media-lg card-media" layout-padding><img ng-src="{{ profile.picture }}"><h1 id="username">{{profile.nickname}}</h1></div>
   <br>
   <p id="restaurantCount">Restaurants Visited: {{user.reviewCount}}</p>
   <br>
