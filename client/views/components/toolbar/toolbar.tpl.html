@@ -1,0 +1,78 @@
+<!-- components/toolbar/toolbar.tpl.html -->
+
+<!-- <head> -->
+
+
+  <!-- My CSS -->
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+ <!--  Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+
+<!-- Optional theme -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> -->
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+
+  
+  
+<!-- </head> -->
+<body>
+
+<md-toolbar>
+  <div class="md-toolbar-tools themer">
+  <img class= "logo" src="/views/components/toolbar/SAVOR4XWHITEXBLACK.png">
+    <span flex></span>
+
+    <md-button
+      aria-label="Login"
+      ui-sref="toolbar"
+      ng-if="!toolbar.auth.isAuthenticated"
+      ng-click="toolbar.login()">
+      Login
+    </md-button>
+
+    <md-button
+      ui-sref="user"
+      aria-label="Write Review"
+      style="float:right" 
+      ng-click="openReview()"
+      ng-if="toolbar.auth.isAuthenticated"
+      aria-label="User">
+      <i class="material-icons" class="name">mode_edit</i></md-icon>
+    </md-button>
+
+    <md-button
+      aria-label="Logout"
+      ui-sref="toolbar"
+      ng-if="toolbar.auth.isAuthenticated"
+      ng-click="toolbar.logout()">
+      Logout
+    </md-button>
+    
+    <!-- user button currently does nothing and appears regardless if logged in or not-->
+    <md-button aria-label="User Settings"  style="float:right" ng-click="someAction()">
+      <i class="material-icons" class="name">perm_identity</i></md-icon>
+    </md-button>
+    
+<!--         <md-toolbar class="md-hue-1" ng-show="showSearch">
+      <div class="md-toolbar-tools">
+        <md-input-container md-theme="input" flex>
+          <label>&nbsp;</label>
+          <input ng-model="search.who" placeholder="enter search">
+        </md-input-container>
+        <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+          <i class="material-icons" class="name" layout-align="enc center">search</i></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar> -->
+
+  </div>
+<span class="container" ng-if="!toolbar.auth.isAuthenticated">
+  <img class= "rotatingLogo" src="/views/components/toolbar/SAVOR4XWHITEXBLACK.png">
+</span>
+</md-toolbar>
+</body>
