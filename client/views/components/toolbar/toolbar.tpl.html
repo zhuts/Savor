@@ -26,7 +26,7 @@
   <div class="md-toolbar-tools themer">
   <img class= "logo" src="/views/components/toolbar/SAVOR4XWHITEXBLACK.png">
     <span flex></span>
-
+    
     <md-button
       aria-label="Login"
       ui-sref="toolbar"
@@ -53,22 +53,6 @@
       Logout
     </md-button>
     
-    <!-- user button currently does nothing and appears regardless if logged in or not-->
-    <md-button aria-label="User Settings"  style="float:right" ng-click="someAction()">
-      <i class="material-icons" class="name">perm_identity</i></md-icon>
-    </md-button>
-    
-<!--         <md-toolbar class="md-hue-1" ng-show="showSearch">
-      <div class="md-toolbar-tools">
-        <md-input-container md-theme="input" flex>
-          <label>&nbsp;</label>
-          <input ng-model="search.who" placeholder="enter search">
-        </md-input-container>
-        <md-button aria-label="Search" ng-click="showSearch = !showSearch">
-          <i class="material-icons" class="name" layout-align="enc center">search</i></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar> -->
 
   </div>
 <span class="container" ng-if="!toolbar.auth.isAuthenticated">

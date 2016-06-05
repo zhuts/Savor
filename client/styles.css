@@ -153,6 +153,7 @@ p {
   padding-left: 20px;
   text-align: left;
   color: black;
+  display: inline-block;
 }
 
 #userphoto {
