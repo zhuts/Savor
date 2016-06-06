@@ -8,7 +8,9 @@
 
   <!-- AngularJS -->
   <script src="bower_components/angular/angular.js"></script>
-  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/10.0.4/ng-file-upload.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/10.0.4/ng-file-upload-shim.min.js'></script>
+
   <!-- Angular cookie wrapper library for client cookies -->
   <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
   <!-- Angular's Router Library for SPA -->
@@ -30,7 +32,7 @@
 
   <!-- Angular Material -->
   <script src="bower_components/angular-material/angular-material.min.js"></script>
-  
+
   <!-- Auth0's Viewport settings-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
@@ -56,13 +58,13 @@
   <script src="/views/components/toolbar/toolbar.dir.js"></script>
   <script src="/views/components/profile/profile.ctrl.js"></script>
 
-  
-  
+
+
 </head>
 
 <body ng-app="savor" ng-controller="savorCtrl">
 
-  <div layout="column" >  
+  <div layout="column" >
     <!-- <md-toolbar class="md-hue-1" ng-show="showSearch">
       <div class="md-toolbar-tools">
         <md-input-container flex>
@@ -79,10 +81,10 @@
   <br>
   <p id="restaurantCount">Restaurants Visited: {{user.reviewCount}}</p>
   <br>
-  
+
  <!--  SORTBY -->
-  
-  <section layout="row" layout-sm="column" layout-align="center" layout-wrap >
+
+  <!-- <section layout="row" layout-sm="column" layout-align="center" layout-wrap >
     <md-input-container flex>
       <md-icon><i class="material-icons" class="name"></i></md-icon>
         <label>Sort By</label>
@@ -94,8 +96,8 @@
             Newest-Oldest
           </md-option>
         </md-select>
-    </md-input-container> 
-    
+    </md-input-container> -->
+
 <!--     SEARCH -->
     <md-input-container class="md-icon-float md-block" flex>
       <md-icon><i class="material-icons" class="name"></i>search</md-icon>
@@ -104,7 +106,7 @@
         {{restaurant.restaurantAddress}}
     </md-input-container>
   </section>
-    
+
 
 
 <!-- RESTAURANT RENDER -->
@@ -114,12 +116,12 @@
         <div id="content">
           <div class="row">
             <div class="col-md-4">
-              <img id="restphoto" src="{{restaurant.image}}" alt="">
+              <img id="restphoto" src={{restaurant.image}} alt="">
             </div>
             <div class="col-md-8">
-              <h1>{{restaurant.restaurantName}}</h1>
+            <h1>{{restaurant.restaurantName}}</h1>
                 <div class="restinfo">
-                  <p>{{restaurant.restaurantAddress}}</p>
+                  <p><strong>{{restaurant.restaurantAddress}}</strong></p>
                   <p>{{restaurant.restaurantReview}}</p>
                 </div>
               <h3>Ratings</h3>
