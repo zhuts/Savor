@@ -1,39 +1,18 @@
-angular
-  .module('savor.review',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngDialog'])
-  .controller('reviewController', function($scope, $http, ngDialog) {
-      
-    // $scope.restaurant = {
-    //   name: '',
-    //   address: '',
-    // }
-    
-    // $scope.price = '';
-    // $scope.priceCategories = [{rating:1, text: "Expensive"}, {rating: 2, text: "Affordable"}, {rating: 3, text: "Cheap!" }];
-    
-    // $scope.service = '';
-    // $scope.serviceCategories = [{rating:1, text: "It was OK"}, {rating: 2, text: "Good!"}, {rating: 3, text: "Phenomenal!" }];
-    
-    // $scope.food = '';
-    // $scope.foodCategories = [{rating:1, text: "Decent"}, {rating: 2, text: "Yummy!"}, {rating: 3, text: "Transcendental" }];
-    
-    // $scope.ambience = '';
-    // $scope.ambienceCategories = [{rating:1, text: "Not a priority"}, {rating: 2, text: "Welcoming"}, {rating: 3, text: "Something special" }];
-    var f;
+ var app = angular.module('savor.review',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngDialog', 'ngFileUpload'])
+  .controller('reviewController', function($scope, $http, ngDialog, Upload, $window) {
+
+    //to get the filename of the pic uploaded.
+    var pic;
+    $scope.picName;
+
     $scope.add = function(){
-      f = document.getElementById('file').files[0];
-      // var r = new FileReader();
-      // var data;
-      
-      // r.onloadend = function(e){
-      //   data = e.target.result;
-      //   //send you binary data via $http or $resource or do anything else with it
-      // }
-      
-      // r.readAsBinaryString(f);
-      console.log(f);
-    }   
+      pic = document.getElementById('file').files[0];
+      console.log(pic.name);
+      $scope.picName = pic.name;
+    }
+
     $scope.sendPost = function () {
-        //useremail file is parsed into the windowlocal storage 
+        //useremail file is parsed into the windowlocal storage
         var data = ({
             restaurantName: $scope.restaurant.name,
             restaurantAddress: $scope.restaurant.address,
@@ -43,27 +22,45 @@ angular
             ambienceRating: $scope.ambience,
             restaurantReview: $scope.restaurant.review,
             userEmail: JSON.parse(window.localStorage.profile).email,
-            restaurantPhoto: "http://localhost:3000/upload/"+ f.name.toString()
+            image: "http://localhost:4000/uploads/"+ pic.name.toString()
         });
 
         console.log("data", data);
         //console.log("user", JSON.parse(window.localStorage.profile).email);
-    
+
         var config = {
             headers : {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         }
-        
+
         $http({
           method: "POST",
           data: data,
           url: '/api/restaurants'
         })
+
+      var that = this;
+      that.upload = function(file){
+        Upload.upload({
+          url: 'http://localhost:4000/uploads', //webAPI exposed to upload the file
+          data:{file:file} //pass file as data, should be user ng-model
+        }).then(function (resp){ //upload function returns a promise
+          if(resp.data.error_code === 0){ //validate success
+            $window.alert('Success ' + that.up.file.name + 'uploaded. Response: ');
+          }else{
+            $window.alert('an error occured');
+          }
+        });
+      };
+
+      that.upload(that.up.file);
+      console.log(this);
+
+
         // $("#start").append('<div id="container"><div id="content"><div class="row"><div class="col-md-4"><img id="restphoto" src="{{'data.image'}}" alt=""></div><div class="col-md-8"><h1>{{'data.restaurantName'}}</h1><div class="restinfo"><p>{{'data.restaurantAddress'}}</p><p>{{'data.restaurantReview'}}</p></div><h3>Ratings</h3><div class ="ratinginfo"><ul><li>Food: {{'data.foodRating'}}</li><li>Service: {{'data.serviceRating'}}</li><li>Ambience: {{'data.ambienceRating'}}</li><li>Price per: {{'$' '+ data.priceRating'}}</li></ul></div></div></div></div></div>')
         ngDialog.close();
         //doesn't do anything
         // window.refresh();
       };
   });
-  
