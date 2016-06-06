@@ -69,11 +69,4 @@
         $scope.photoUploaded = false;
       };
 
-      $scope.selectConfirm = function() {
-
-      }
-
-      $scope.uploadConfirm = function() {
-
-      }
   });
