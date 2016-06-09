@@ -13,6 +13,7 @@
     "Zach Hutsell"
   ],
   "dependencies": {
+    "aws-sdk": "^2.3.18",
     "body-parser": "^1.4.3",
     "cors": "2.7.1",
     "express": "^4.4.5",
