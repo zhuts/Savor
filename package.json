@@ -12,6 +12,10 @@
     "Brendan Pelletier",
     "Zach Hutsell"
   ],
+  "scripts": {
+    "start": "node server/server.js",
+    "postinstall": "bower install"
+  },
   "dependencies": {
     "aws-sdk": "^2.3.18",
     "body-parser": "^1.4.3",
