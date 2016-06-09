@@ -1,17 +1,58 @@
 var mongoose = require('mongoose');
 
-// Create the schema
 var restSchema = new mongoose.Schema({
-  restaurantName: String,
-  restaurantAddress: String,
-  priceRating: String,
-  serviceRating: Number,
-  foodRating: Number,
-  ambienceRating: Number,
-  restaurantReview: String,
-  userEmail: String,
-  image: String
- });
+  // meals: [mealSchema],
+  restaurantName: {
+		type: String,
+		default: ''
+	},
+  restaurantAddress: {
+		type: String,
+		default: ''
+	},
+  priceRating: {
+		type: Number,
+		default: ''
+	},
+  serviceRating: {
+		type: Number,
+		default: ''
+	},
+  foodRating: {
+		type: Number,
+		default: ''
+	},
+  ambienceRating: {
+		type: Number,
+		default: ''
+	},
+  restaurantReview: {
+		type: String,
+		default: ''
+	},
+  image: {
+		type: String,
+		default: ''
+	},
+ })
 
-//Export a Restaurant model to be used in the controllers file.
+// var mealSchema = new mongoose.Schema({});
+
+var userSchema = new mongoose.Schema({
+	username: {
+		type: String,
+		default: ''
+	},
+	email: {
+		type: String,
+		default: ''
+	},
+	hashedPassword: {
+		type: String,
+		default: ''
+	},
+
+})
+
 module.exports = mongoose.model("Restaurant", restSchema);
+module.exports = mongoose.model('User', userSchema);

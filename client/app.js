@@ -78,7 +78,7 @@ angular
     }
       $provide.factory('redirect', redirect);
       $httpProvider.interceptors.push('jwtInterceptor');
-      $httpProvider.interceptors.push('redirect');
+      // $httpProvider.interceptors.push('redirect');
     })
     
     // The callback in $locationChangeStart gets evaluated 
