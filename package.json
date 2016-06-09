@@ -12,6 +12,9 @@
     "Brendan Pelletier",
     "Zach Hutsell"
   ],
+  "engines": {
+    "node": "4.1.1"
+  },
   "scripts": {
     "start": "node server/server.js",
     "postinstall": "bower install"
