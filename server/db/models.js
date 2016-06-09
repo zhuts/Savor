@@ -38,7 +38,7 @@ var restSchema = new mongoose.Schema({
 		type: String,
 		default: ''
 	},
- })
+ });
 
 // var mealSchema = new mongoose.Schema({});
 
@@ -56,7 +56,7 @@ var userSchema = new mongoose.Schema({
 		default: ''
 	},
 
-})
+});
 
 module.exports = mongoose.model("Restaurant", restSchema);
 module.exports = mongoose.model('User', userSchema);
