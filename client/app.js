@@ -17,8 +17,8 @@ angular.module('savor', [
 .config(function($provide, authProvider, $urlRouterProvider, $stateProvider, $httpProvider, jwtInterceptorProvider) {
 
   authProvider.init({
-    domain: 'savor.auth0.com',
-    clientID: 'VJw1CCaxKJ4FdkqPamlBxUUrjuGapt8e'
+    domain: 'russiansummer.auth0.com',
+    clientID: 'soUXI6OjMIep7IS2mPUgCxIrLgQF96Hy'
   });
 
   $urlRouterProvider.otherwise('/');

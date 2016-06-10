@@ -7,6 +7,8 @@ var port = process.env.PORT || 4000;
 var morgan = require('morgan');
 var multer = require('multer');
 
+var authEnvironment = require('./authCheck.js');
+
 // Set up mongoose
 var mongoose = require('mongoose');
 mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/restaurant';
@@ -27,8 +29,11 @@ app.use(cors());
 var authCheck = jwt({
   // secret: new Buffer('0UpBbiHuBz0B45N27qKkqhZnJcOrgHvT6y5kVUQl-O1GSuWisuN3RKKrxjwgvqky', 'base64'),
   // audience: 'VJw1CCaxKJ4FdkqPamlBxUUrjuGapt8e'
-  secret: new Buffer('n5DQCJJ7I0UVxJQDsyLWlWyw-9k', 'base64'),
-  audience: 'm2fcwxHoAPCGPkxyNyQMIAG0kn4'
+  // secret: new Buffer('n5DQCJJ7I0UVxJQDsyLWlWyw-9k', 'base64'),
+  // audience: 'm2fcwxHoAPCGPkxyNyQMIAG0kn4'
+  secret: new Buffer(authEnvironment.secret, 'base64'),
+  // audience is clientID
+  audience: authEnvironment.audience
 });
 
 //stores the photo in the uploads directory.
