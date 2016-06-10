@@ -1,4 +1,5 @@
-var Restaurant = require('./models');
+var Restaurant = require('./models/restaurants.js');
+var User = require('./models/users.js');
 var _ = require('underscore');
 
 module.exports = {
@@ -9,9 +10,9 @@ module.exports = {
       } else {
         callback(restaurant);
       }
-    })
+    });
   },
-  
+
   fetchAll: function(callback) {
     Restaurant.find(function(err,restaurants) {
       if(err) {
@@ -29,10 +30,10 @@ module.exports = {
       } else {
         callback(restaurant);
       }
-    })
+    });
   },
-  
-  
+
+
   addRestaurantReview: function(restaurant, callback) {
     var newRestaurant = new Restaurant(restaurant);
     newRestaurant.save(function(err, newEntry) {
@@ -41,7 +42,7 @@ module.exports = {
       } else {
         callback(newEntry);
       }
-    })
+    });
   },
 
   updateOne: function(id, newProperties, callback) {
@@ -53,13 +54,13 @@ module.exports = {
         _.extend(user, newProperties);
         user.save(function(err, updatedUser) {
           if (err) {
-            console.log('There was an error updating entry')
+            console.log('There was an error updating entry');
           } else {
             callback(updatedUser);
           }
-        })
+        });
       }
-    })
+    });
   },
 
   deleteOne: function(id, callback) {
@@ -73,8 +74,8 @@ module.exports = {
           } else {
             callback(removed);
           }
-        })
+        });
       }
-    })
+    });
   }
 };
