@@ -46,10 +46,24 @@
     <div layout="row">
       <!-- UPLOAD PIC BUTTON -->
 <!-- <input type="file" ngf-select ng-model="up.file" name="file" /> -->
-      
+
+      <!-- <input type="file" id="file-input">
+      <p id="status">Please select a file</p> -->
+      <img id="preview" src="">
+
+      <input name="file" type="file" file />
+      <md-button class="md-buton md-raised md-primary" ng-click="upload()">UPLOAD PHOTO</md-button>
+
+<!--       <form method="POST" action="/save-details">
+        <input type="hidden" id="avatar-url" name="avatar-url" value="/images/default.png">
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="text" name="full-name" placeholder="Full name"><br><br>
+        <input type="submit" value="Update profile">
+      </form> -->
+<!-- 
       <input class="ng-hide" ngf-select ng-model="up.file" type="file" id="file" name="file">
       <label for="file" class="md-button md-raised md-primary">CHOOSE PHOTO</label>
-      <md-button class="md-buton md-raised md-primary" ng-click="add()">UPLOAD PHOTO</md-button>
+      <md-button class="md-buton md-raised md-primary" ng-click="add()">UPLOAD PHOTO</md-button> -->
       <md-button class="md-warn md-raised md-hue-2" ng-click="sendPost()">SUBMIT!</md-button>
 
     </div>
