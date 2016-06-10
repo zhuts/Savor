@@ -5,8 +5,7 @@ angular
 function loginController(auth, store, $location, ngDialog, $scope) {
     var vm = this;
     vm.login = login;
-    vm.logout = logout;
-    vm.auth = auth;
+
     
     function login() {
       console.log("Login Success");
