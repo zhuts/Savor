@@ -42,21 +42,4 @@ var restSchema = new mongoose.Schema({
 
 // var mealSchema = new mongoose.Schema({});
 
-var userSchema = new mongoose.Schema({
-	username: {
-		type: String,
-		default: ''
-	},
-	email: {
-		type: String,
-		default: ''
-	},
-	hashedPassword: {
-		type: String,
-		default: ''
-	},
-
-});
-
 module.exports = mongoose.model("Restaurant", restSchema);
-module.exports = mongoose.model('User', userSchema);
