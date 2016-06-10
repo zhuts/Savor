@@ -3,16 +3,18 @@ var mongoose = require('mongoose');
 var userSchema = new mongoose.Schema({
 	username: {
 		type: String,
-		default: ''
+		default: '',
+		unique: true
+		// required: true
 	},
 	email: {
 		type: String,
-		default: ''
+		default: '',
+		unique: true,
+		required: true
 	},
-	hashedPassword: {
-		type: String,
-		default: ''
-	},
-
+	meals: {
+		type: Array
+	}
 });
 module.exports = mongoose.model('User', userSchema);
