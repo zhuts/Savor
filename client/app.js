@@ -1,37 +1,28 @@
-
-// var underscore = angular.module('underscore', []);
-// underscore.factory('_', function() {
-//   return window._; //Underscore must already be loaded on the page
-// });
-// var savor = 
-angular
-  .module('savor', [
-    'savor.toolbar',
-    'savor.review',
-    'savor.profile',
-    'savor.user',
-    'auth0', 
-    'angular-storage', 
-    'angular-jwt',
-    'ui.router',
-    'ngDialog',
-    'ngMaterial',
-    'material.svgAssetsCache'
-    // 'underscore'
-  ])
+angular.module('savor', [
+  'savor.toolbar',
+  'savor.review',
+  'savor.profile',
+  'savor.user',
+  'auth0',
+  'angular-storage',
+  'angular-jwt',
+  'ui.router',
+  'ngDialog',
+  'ngMaterial',
+  'material.svgAssetsCache'
+])
 
 
 .config(function($provide, authProvider, $urlRouterProvider, $stateProvider, $httpProvider, jwtInterceptorProvider) {
-    
+
   authProvider.init({
     domain: 'savor.auth0.com',
     clientID: 'VJw1CCaxKJ4FdkqPamlBxUUrjuGapt8e'
   });
 
   $urlRouterProvider.otherwise('/user');
-  
-  $stateProvider
 
+  $stateProvider
   .state('profile', {
     url: '/profile',
     templateUrl: '/views/components/profile/profile.tpl.html',
@@ -49,86 +40,62 @@ angular
   })
   .state('/', {
     url: '/',
-    // templateUrl: '/'
-    // controller: 'toolbarController',
   });
-  
+
   jwtInterceptorProvider.tokenGetter = function(store) {
     return store.get('token');
   };
-  
+
   //  The redirect function is used to check for a rejection.status
-  //  of 401 on any responses that come back from HTTP requests. 
-  //  If one is found, we use auth.signout to set isAuthenticated 
-  //  to false, remove the user’s profile and JWT, and take them 
+  //  of 401 on any responses that come back from HTTP requests.
+  //  If one is found, we use auth.signout to set isAuthenticated
+  //  to false, remove the user’s profile and JWT, and take them
   //  to the home state.
   function redirect($q, $injector, auth, store, $location) {
-      return {
-        responseError: function(rejection) {
-          
-          if (rejection.status === 401) {
-            auth.signout();
-            store.remove('profile');
-            store.remove('token');
-            $location.path('/');
-          }
-          return $q.reject(rejection);
-        }
-      };
-    }
-      $provide.factory('redirect', redirect);
-      $httpProvider.interceptors.push('jwtInterceptor');
-      // $httpProvider.interceptors.push('redirect');
-    })
-    
-    // The callback in $locationChangeStart gets evaluated 
-    // every time the page is refreshed, or when a new URL 
-    // is reached. Inside the callback we are looking for 
-    // a saved JWT, and if there is one, we check whether 
-    // it is expired. If the JWT isn’t expired, we set the 
-    // user’s auth state with their profile and token. If 
-    // the JWT is expired, we redirect to the home route.
-    .run(function($rootScope, $state, auth, store, jwtHelper, $location) {   
-      $rootScope.$on('$locationChangeStart', function() {
-        // Get the JWT that is saved in local storage
-        // and if it is there, check whether it is expired.
-        // If it isn't, set the user's auth state
-        var token = store.get('token');
-        if (token) {
-          if (!jwtHelper.isTokenExpired(token)) {
-            if (!auth.isAuthenticated) {
-              auth.authenticate(store.get('profile'), token);
-            }
-          } 
-        } 
-        else {          
-          // Otherwise, redirect to the home route
+    return {
+      responseError: function(rejection) {
+        if (rejection.status === 401) {
+          auth.signout();
+          store.remove('profile');
+          store.remove('token');
           $location.path('/');
         }
-      });
-  })
+        return $q.reject(rejection);
+      }
+    };
+  }
+  $provide.factory('redirect', redirect);
+  $httpProvider.interceptors.push('jwtInterceptor');
+})
+
+// The callback in $locationChangeStart gets evaluated
+// every time the page is refreshed, or when a new URL
+// is reached. Inside the callback we are looking for
+// a saved JWT, and if there is one, we check whether
+// it is expired. If the JWT isn’t expired, we set the
+// user’s auth state with their profile and token. If
+// the JWT is expired, we redirect to the home route.
+.run(function($rootScope, $state, auth, store, jwtHelper, $location) {
+  $rootScope.$on('$locationChangeStart', function() {
+    // Get the JWT that is saved in local storage
+    // and if it is there, check whether it is expired.
+    // If it isn't, set the user's auth state
+    var token = store.get('token');
+    if (token) {
+      if (!jwtHelper.isTokenExpired(token)) {
+        if (!auth.isAuthenticated) {
+          auth.authenticate(store.get('profile'), token);
+        }
+      }
+    } else {
+      // Otherwise, redirect to the home route
+      $location.path('/');
+    }
+  });
+})
 
 
-  .controller('savorCtrl',['$scope', '$http', '$location', '$stateParams', function savorCtrl($scope, $http, $location, $stateParams) {
-
-  // function getAll() {
-  //   var user = JSON.parse(window.localStorage.profile).email;
-  //   $http.get('/api/restaurants').then(function(res) {
-  //     $scope.restaurants = _.filter(res.data,function(restaurant) {
-  //       console.log('user', user);
-  //       console.log('email', restaurant.userEmail);
-  //       //filter restaurants such that the email associated with the restaurant is the same as the email of the user currently logged in
-  //       if(restaurant.userEmail === user) {
-  //         return true;
-  //       } else {
-  //         return false;
-  //       }
-  //     });
-      
-  //     console.log($scope.restaurants, "console.log $scope.rest");
-  //   })
-  // }
-
+.controller('savorCtrl',['$scope', '$http', '$location', '$stateParams', function savorCtrl($scope, $http, $location, $stateParams) {
   function getOne() {
     var id = $stateParams.id;
     $http.get('/api/restaurants/'+id).then(function(res) {
@@ -155,8 +122,4 @@ angular
       window.location.href='#/restaurants';
     });
   }
-
-  // getAll();
-
 }]);
-  
