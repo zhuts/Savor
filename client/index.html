@@ -71,6 +71,64 @@
 <span class="containerbackground"> </span>
 <div ui-view=''></div>
 
+<input type="file" id="file-input">
+<p id="status">Please select a file</p>
+<img id="preview" src="/images/default.png">
+
+<form method="POST" action="/save-details">
+  <input type="hidden" id="avatar-url" name="avatar-url" value="/images/default.png">
+  <input type="text" name="username" placeholder="Username"><br>
+  <input type="text" name="full-name" placeholder="Full name"><br><br>
+  <input type="submit" value="Update profile">
+</form>
+
+<script>
+  (() => {
+    document.getElementById("file-input").onchange = function() {
+      var files = document.getElementById('file-input').files;
+      var file = files[0];
+      if(file == null){
+        return alert('No file selected.');
+      }
+      getSignedRequest(file);
+    };
+  })();
+
+  function getSignedRequest(file){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState === 4){
+      if(xhr.status === 200){
+        var response = JSON.parse(xhr.responseText);
+        uploadFile(file, response.signedRequest, response.url);
+      }
+      else{
+        alert('Could not get signed URL.');
+      }
+    }
+  };
+  xhr.send();
+}
+
+function uploadFile(file, signedRequest, url){
+  var xhr = new XMLHttpRequest();
+  xhr.open('PUT', signedRequest);
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState === 4){
+      if(xhr.status === 200){
+        document.getElementById('preview').src = url;
+        document.getElementById('avatar-url').value = url;
+      }
+      else{
+        alert('Could not upload file.');
+      }
+    }
+  };
+  xhr.send(file);
+}
+</script>
+
 <script>
   $('body').append(
   '<a href="http://hackreactor.com/remote-beta"> <img style="position: fixed; top: 0; right: 0; border: 0;" src="http://i.imgur.com/x86kKmF.png" alt="Built at Hack Reactor Remote Beta"> </a>');

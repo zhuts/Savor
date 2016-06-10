@@ -39,6 +39,34 @@ var storage = multer.diskStorage({
   }
 });
 
+// load in aws functionality
+var AWS = require('aws-sdk');
+
+// environment variables are defined in heroku
+var S3_BUCKET = process.env.S3_BUCKET;
+
+// handles uploading and returning of image
+app.get('/sign-s3', function(req, res) {
+  var s3 = new AWS.S3();
+  var fileName = req.query['file-name'];
+  var fileType = req.query['file-type'];
+  var s3Params = { Bucket: S3_BUCKET, Key: fileName, Expires: 60, ContentType: fileType, ACL: 'public-read' };
+
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if(err){
+      console.log(err);
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+    };
+    res.write(JSON.stringify(returnData));
+    res.end();
+  });
+});
+
+
 var upload = multer({storage: storage}).single('file');
 
 // API endpoints
