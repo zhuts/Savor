@@ -5,22 +5,7 @@ underscore.factory('_', function() {
 angular
   .module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'underscore'])
   .controller('userController', function($scope, $http, _) {
-    // window.refresh = function() {
-      // $http.get('/api/restaurants').then(function (response) {
-      //   console.log('hello');
-      //   $scope.restaurants = _.filter(res.data,function(restaurant) {
-      //   //filter restaurants such that the email associated with the restaurant is the same as the email of the user currently logged in
-      //     console.log('this is the response',response);
-      //     console.log('this is res.data', res.data);
-      //     if(restaurant.userEmail === user) {
-      //       return true;
-      //     } else {
-      //       return false;
-      //     }
-      //   });
-      // })
 
-    // };
     $scope.profile = JSON.parse(localStorage.getItem('profile'));
     
   function getAll() {
@@ -43,8 +28,5 @@ angular
   
   getAll();
     
-    
-    
-   // window.refresh();
 })
   
