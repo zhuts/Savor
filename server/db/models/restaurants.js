@@ -2,6 +2,10 @@ var mongoose = require('mongoose');
 
 var restSchema = new mongoose.Schema({
   // meals: [mealSchema],
+  userEmail: {
+    type: String,
+    default: ''
+  },
   restaurantName: {
 		type: String,
 		default: ''
