@@ -3,6 +3,7 @@ angular.module('savor', [
   'savor.review',
   'savor.profile',
   'savor.user',
+  'savor.login',
   'auth0',
   'angular-storage',
   'angular-jwt',
@@ -40,7 +41,11 @@ angular.module('savor', [
   })
   .state('/', {
     url: '/',
+    templateUrl: '/views/components/login/login.tpl.html',
+    controller: 'loginController'
   });
+  
+  // need to add something to state here to handle the login page
 
   jwtInterceptorProvider.tokenGetter = function(store) {
     return store.get('token');

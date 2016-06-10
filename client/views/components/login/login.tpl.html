@@ -1,0 +1,97 @@
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<md-toolbar>
+  <div class="md-toolbar-tools themer">
+  <img class= "logo" src="/views/components/toolbar/SAVOR4XWHITEXBLACK.png">
+    <span flex></span>
+    
+    <md-button
+      aria-label="Login"
+      ui-sref="toolbar"
+      ng-if="!toolbar.auth.isAuthenticated"
+      ng-click="toolbar.login()">
+      Login
+    </md-button>
+
+    <md-button
+      ui-sref="user"
+      aria-label="Write Review"
+      style="float:right" 
+      ng-click="openReview()"
+      ng-if="toolbar.auth.isAuthenticated"
+      aria-label="User">
+      <i class="material-icons" class="name">mode_edit</i></md-icon>
+    </md-button>
+
+    <md-button
+      aria-label="Logout"
+      ui-sref="toolbar"
+      ng-if="toolbar.auth.isAuthenticated"
+      ng-click="toolbar.logout()">
+      Logout
+    </md-button>
+  
+  </div>
+  <span class="container" ng-if="!toolbar.auth.isAuthenticated">
+    <img class= "rotatingLogo" src="/views/components/toolbar/SAVOR4XWHITEXBLACK.png">
+  </span>
+</md-toolbar>
+
+<div ng-controller="reviewController" layout="column" layout-padding="" ng-cloak="">
+
+  <md-content class="md-no-momentum">
+
+    <md-input-container class="md-icon-float md-block">
+      <md-icon><i class="material-icons" class="name">restaurant</i></md-icon>
+      <input ng-model="restaurant.name" type="text" placeholder="Restaurant">
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
+      <md-icon><i class="material-icons" class="name">home</i></md-icon>
+      <input ng-model="restaurant.address" type="text" placeholder="Address">
+    </md-input-container>
+  </md-content>
+
+    <p>Choose a score 1-5 for the following categories</p>
+    <div layout="row">
+      <md-input-container flex>
+      <md-icon><i class="material-icons" class="name">attach_money</i></md-icon>
+        <input ng-model="price" type="text" placeholder="Price">
+      </md-input-container>
+    </div>
+
+    <md-input-container md-no-float='' class="md-block">
+      <span>{{200 - restaurant.review.length}} Characters remaining</span>
+      <md-icon><i class="material-icons" class="name">chat</i></md-icon>
+      <input ng-model="restaurant.review" ng-trim="false" maxlength="200" type="text" placeholder="200 Characters"><br><br>
+      <p ng-show="photoUploaded">{{picName}} uploaded!</p>
+    </md-input-container>
+
+    <div layout="row">
+      <!-- UPLOAD PIC BUTTON -->
+<!-- <input type="file" ngf-select ng-model="up.file" name="file" /> -->
+
+      <!-- <input type="file" id="file-input">
+      <p id="status">Please select a file</p> -->
+      <img id="preview" src="">
+
+      <input name="file" type="file" file />
+      <md-button class="md-buton md-raised md-primary" ng-click="upload()">UPLOAD PHOTO</md-button>
+
+<!--       <form method="POST" action="/save-details">
+        <input type="hidden" id="avatar-url" name="avatar-url" value="/images/default.png">
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="text" name="full-name" placeholder="Full name"><br><br>
+        <input type="submit" value="Update profile">
+      </form> -->
+<!-- 
+      <input class="ng-hide" ngf-select ng-model="up.file" type="file" id="file" name="file">
+      <label for="file" class="md-button md-raised md-primary">CHOOSE PHOTO</label>
+      <md-button class="md-buton md-raised md-primary" ng-click="add()">UPLOAD PHOTO</md-button> -->
+      <md-button class="md-warn md-raised md-hue-2" ng-click="sendPost()">SUBMIT!</md-button>
+
+    </div>
+
+</div>
