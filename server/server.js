@@ -25,8 +25,10 @@ app.use(morgan('dev'));
 app.use(cors());
 
 var authCheck = jwt({
-  secret: new Buffer('0UpBbiHuBz0B45N27qKkqhZnJcOrgHvT6y5kVUQl-O1GSuWisuN3RKKrxjwgvqky', 'base64'),
-  audience: 'VJw1CCaxKJ4FdkqPamlBxUUrjuGapt8e'
+  // secret: new Buffer('0UpBbiHuBz0B45N27qKkqhZnJcOrgHvT6y5kVUQl-O1GSuWisuN3RKKrxjwgvqky', 'base64'),
+  // audience: 'VJw1CCaxKJ4FdkqPamlBxUUrjuGapt8e'
+  secret: new Buffer('n5DQCJJ7I0UVxJQDsyLWlWyw-9k', 'base64'),
+  audience: 'm2fcwxHoAPCGPkxyNyQMIAG0kn4'
 });
 
 //stores the photo in the uploads directory.
@@ -38,6 +40,34 @@ var storage = multer.diskStorage({
     var fileNameGiven = cb(null, file.originalname);
   }
 });
+
+// load in aws functionality
+var AWS = require('aws-sdk');
+
+// environment variables are defined in heroku
+var S3_BUCKET = process.env.S3_BUCKET;
+
+// handles uploading and returning of image
+app.get('/sign-s3', function(req, res) {
+  var s3 = new AWS.S3();
+  var fileName = req.query['file-name'];
+  var fileType = req.query['file-type'];
+  var s3Params = { Bucket: S3_BUCKET, Key: fileName, Expires: 60, ContentType: fileType, ACL: 'public-read' };
+
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if(err){
+      console.log(err);
+      return res.end();
+    }
+    var returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+    };
+    res.write(JSON.stringify(returnData));
+    res.end();
+  });
+});
+
 
 var upload = multer({storage: storage}).single('file');
 
