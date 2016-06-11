@@ -4,13 +4,11 @@ angular
 
 function loginController(auth, store, $location, ngDialog, $scope, $rootScope) {
     var vm = this;
-    console.log('the this is ', vm);
-    console.log('user authenticated ', vm.auth.isAuthenticated);
     vm.login = login;
     vm.auth = auth;
-    $scope.isUserAuthenticated = vm.auth.isAuthenticated;
+    
     $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
-    console.log('the vm ', vm.auth);
+    
     function login() {
       console.log("Login Success");
       
@@ -21,6 +19,7 @@ function loginController(auth, store, $location, ngDialog, $scope, $rootScope) {
       auth.signin({}, function(profile, token) {
         store.set('profile', profile);
         store.set('token', token);
+        $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
         $location.path('/user');
         if (!$rootScope.$$phase) $rootScope.$apply();
       }, function(error) {

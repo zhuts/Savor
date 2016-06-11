@@ -69,12 +69,9 @@
 </head>
 
 <body ng-app="savor" ng-controller="savorCtrl">
-<h2 ng-show="!isUserReallyAuthenticated">!isUserReallyAuthenticated</h2>
-<h2 ng-show="isUserReallyAuthenticated">isUserReallyAuthenticated</h2>
-<h4>{{login}}</h4>
+
 <!-- Display toolbar if the user is authenticated only -->
-<!-- <toolbar></toolbar> -->
-<!-- <span class="containerbackground"> </span> -->
+<toolbar ng-show="isUserReallyAuthenticated"></toolbar>
 <div ui-view=''></div>
 
 </body>
