@@ -15,31 +15,28 @@ angular.module('savor.review',['ngMaterial', 'ngMessages', 'material.svgAssetsCa
       userEmail: JSON.parse(window.localStorage.profile).email,
       notes: $scope.meal.notes,
       date: $scope.meal.date,
-      image: $scope.imageUrl
+      image: $scope.myCroppedImageUrl
     });
-    $scope.addReview($scope.meals,data);
+    $scope.addReview($scope.meals, data);
+    $scope.sendPost(data);
     ngDialog.close();
   };
 
   //TODO: refactor for new data form, execute after/simultaneous to adding to new reviews to meals[] in users.js
-  // $scope.sendPost = function () {
-  //   //useremail file is parsed into the windowlocal storage
-  //   var data = ({
-  //     userEmail: JSON.parse(window.localStorage.profile).email,
-  //   });
-  //   var config = {
-  //     headers : {
-  //       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-  //     }
-  //   };
-  //   $http({
-  //     method: "POST",
-  //     data: data,
-  //     url: '/api/restaurants'
-  //   });
-  //   ngDialog.close();
-  //   $scope.photoUploaded = false;
-  // };
+  $scope.sendPost = function (data) {
+    //useremail file is parsed into the windowlocal storage
+    var config = {
+      headers : {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
+    };
+    $http({
+      method: "POST",
+      data: data,
+      url: '/api/restaurants'
+    });
+    $scope.photoUploaded = false;
+  };
 
   // attach event listener to file input to detect when a file is loaded
     angular.element(document).ready(function () {
