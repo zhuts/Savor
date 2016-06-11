@@ -3,9 +3,10 @@ var _ = require('underscore');
 
 module.exports = {
   getUser: function(req, callback) {
-    var id = req.params.id;
+    var id = req.body.userID;
     var email = req.body.email;
-    console.log(req.body);
+    var username = req.body.username;
+
     User.findOne({userID: id}).exec(function(err, foundUser) {
       if (foundUser) {
         console.log('Found the user');
@@ -15,7 +16,8 @@ module.exports = {
         // get information stuff to actually create a newUser
         var newUser = {
           userID: id,
-          email: email
+          email: email,
+          username: username
         };
         User.create(newUser);
         callback(newUser);
@@ -24,10 +26,9 @@ module.exports = {
   },
   
   addMealToUser: function(req, callback) {
-    var id = req.params.id;
-    var email = req.body.email;
-    // var meal = 
-    // req.body something to get the meal information in the right format
+    var id = req.body.userID;
+    var meal = req.body.meal;
+    
     User.findOne({userID: id}).exec(function(err, foundUser) {
       foundUser.meals.push(meal);
     });
@@ -35,10 +36,8 @@ module.exports = {
   },
   
   addFriendToUser: function(req, callback) {
-    var id = req.params.id;
-    var email = req.body.email;
-    // var friend = 
-    // req.body something to get the meal information in the right format
+    var id = req.body.userID;
+    var friend = req.body.friend;
     User.findOne({userID: id}).exec(function(err, foundUser) {
       foundUser.friends.push(friend);
     });

@@ -20,10 +20,12 @@ var userSchema = new mongoose.Schema({
 		required: true
 	},
 	meals: {
-		type: Array
+		type: Array,
+		default: []
 	},
 	friends: {
-		type: Array
+		type: Array,
+		default: []
 	}
 });
 module.exports = mongoose.model('User', userSchema);
