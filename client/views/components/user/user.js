@@ -19,6 +19,18 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
           return false;
         }
       });
+
+      $scope.restaurants.forEach(function(meal) {
+        var unique = _.reduce($scope.meals, function(acc, meal1) {
+          if (meal.meal === meal1.meal) {
+            acc = true;
+          }
+          return acc;
+        }, false);
+        if (!unique) {
+          $scope.meals.push(meal);
+        }
+      })
     });
   }
   getAll();
@@ -27,48 +39,6 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
 .factory('Meals', function() {
   var meals = [];
 
-  //Test Data
-  // var meals = [{
-  //   meal: "Steak Tartar",
-  //   restaurant: "Mom's Fancy Diner",
-  //   date: "today"
-  // }, {
-  //   meal: "Fried Possum",
-  //   restaurant: "Bayou Bill's BBQ",
-  //   date: "yesterday"
-  // }, {
-  //   meal: "Big Mac",
-  //   restaurant: "the good McDonalds, yknow, by the freeway",
-  //   date: "tomorrow"
-  // }, {
-  //   meal: "Soylent Green",
-  //   restaurant: "Probably People",
-  //   date: "the near future"
-  // }, {
-  //   meal: "Peanut Butter, straight from the jar",
-  //   restaurant: "your empty pantry",
-  //   date: "whatevs"
-  // }, {
-  //   meal: "Steak Tartar",
-  //   restaurant: "Mom's Fancy Diner",
-  //   date: "today"
-  // }, {
-  //   meal: "Fried Possum",
-  //   restaurant: "Bayou Bill's BBQ",
-  //   date: "yesterday"
-  // }, {
-  //   meal: "Big Mac",
-  //   restaurant: "the good McDonalds, yknow, by the freeway",
-  //   date: "tomorrow"
-  // }, {
-  //   meal: "Soylent Green",
-  //   restaurant: "Probably People",
-  //   date: "the near future"
-  // }, {
-  //   meal: "Peanut Butter, straight from the jar",
-  //   restaurant: "your empty pantry",
-  //   date: "whatevs"
-  // }];
   var addMeal = function(newMeal){
     meals.push(newMeal);
   };
