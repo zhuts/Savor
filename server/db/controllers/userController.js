@@ -23,7 +23,24 @@ module.exports = {
     });
   },
   
-  postToUserData: function(id, callback) {
+  addMealToUser: function(req, callback) {
+    var id = req.params.id;
+    var email = req.body.email;
+    // var meal = 
+    // req.body something to get the meal information in the right format
+    User.findOne({userID: id}).exec(function(err, foundUser) {
+      foundUser.meals.push(meal);
+    });
     
+  },
+  
+  addFriendToUser: function(req, callback) {
+    var id = req.params.id;
+    var email = req.body.email;
+    // var friend = 
+    // req.body something to get the meal information in the right format
+    User.findOne({userID: id}).exec(function(err, foundUser) {
+      foundUser.friends.push(friend);
+    });
   }
 };

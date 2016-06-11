@@ -105,8 +105,16 @@ app.get('/api/users/:id', function(req, res) {
   });
 });
 
-app.post('/api/users/:id', function(req, res) {
-  handler.postToUserData(req);
+app.post('/api/users/meals/:id', function(req, res) {
+  userController.addMealToUser(req, function() {
+    res.status(201).send("Meal added to user");
+  });
+});
+
+app.post('/api/users/friends/:id', function(req, res) {
+  userController.addFriendToUser(req, function() {
+    res.status(201).send("Friend added to user");
+  });
 });
 
 //photo upload
