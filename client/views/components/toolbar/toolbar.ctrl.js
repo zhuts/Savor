@@ -22,8 +22,8 @@ function toolbarController(auth, store, $location, ngDialog, $scope, $rootScope)
     }
 
     $scope.openReview = function() {
-      ngDialog.open({template: '/views/components/review/review.tpl.html',
-        controller: 'reviewController',
+      ngDialog.open({template: '/views/components/review/review.html',
+        controller: 'reviewCtrl',
         scope: $scope,
         className: 'ngdialog-theme-default dialogwidth800'
       });

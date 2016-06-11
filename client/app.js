@@ -10,9 +10,38 @@ angular.module('savor', [
   'ui.router',
   'ngDialog',
   'ngMaterial',
-  'material.svgAssetsCache'
+  'material.svgAssetsCache',
+  'wu.masonry'
 ])
 
+.controller('savorCtrl',['$scope', '$http', '$location', '$stateParams', function savorCtrl($scope, $http, $location, $stateParams) {
+  function getOne() {
+    var id = $stateParams.id;
+    $http.get('/api/restaurants/'+id).then(function(res) {
+      $scope.restaurant = res.data;
+    });
+  }
+
+  function addOne() {
+    $http.post('/api/restaurants', $scope.restaurant).then(function(res) {
+      window.location.href='#/restaurants';
+    });
+  }
+
+  function update() {
+    var id = $stateParams.id;
+    $http.put('/api/restaurants/'+id, $scope.restaurant).then(function(res) {
+      window.location.href='#/restaurants';
+    });
+  }
+
+  function remove() {
+    var id = $stateParams.id;
+    $http.delete('/api/restaurants/' + id).success(function(response) {
+      window.location.href='#/restaurants';
+    });
+  }
+}])
 
 .config(function($provide, authProvider, $urlRouterProvider, $stateProvider, $httpProvider, jwtInterceptorProvider) {
 
@@ -31,13 +60,17 @@ angular.module('savor', [
   })
   .state('user', {
     url: '/user',
-    templateUrl: '/views/components/user/user.tpl.html',
-    controller: 'userController',
+    // templateUrl: '/views/components/user/user.tpl.html',
+    templateUrl: '/views/components/user/user.html',
+    // controller: 'userController',
+    controller: 'userCtrl',
   })
   .state('review', {
     url: '/review',
-    templateUrl: '/views/components/review/review.tpl.html',
-    controller: 'reviewController',
+    // templateUrl: '/views/components/review/review.tpl.html',
+    templateUrl: '/views/components/review/review.html',
+    // controller: 'reviewController',
+    controller: 'reviewCtrl',
   })
   .state('/', {
     url: '/',
@@ -97,34 +130,5 @@ angular.module('savor', [
       $location.path('/');
     }
   });
-})
+});
 
-
-.controller('savorCtrl',['$scope', '$http', '$location', '$stateParams', function savorCtrl($scope, $http, $location, $stateParams) {
-  function getOne() {
-    var id = $stateParams.id;
-    $http.get('/api/restaurants/'+id).then(function(res) {
-      $scope.restaurant = res.data;
-    });
-  }
-
-  function addOne() {
-    $http.post('/api/restaurants', $scope.restaurant).then(function(res) {
-      window.location.href='#/restaurants';
-    });
-  }
-
-  function update() {
-    var id = $stateParams.id;
-    $http.put('/api/restaurants/'+id, $scope.restaurant).then(function(res) {
-      window.location.href='#/restaurants';
-    });
-  }
-
-  function remove() {
-    var id = $stateParams.id;
-    $http.delete('/api/restaurants/' + id).success(function(response) {
-      window.location.href='#/restaurants';
-    });
-  }
-}]);
