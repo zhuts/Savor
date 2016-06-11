@@ -8,7 +8,8 @@
     vm.getMessage = getMessage;
     vm.getSecretMessage = getSecretMessage;
     vm.message;
-
+    
+    // The vm.profile may be where the profile pictures gets pulled from
     vm.profile = JSON.parse(localStorage.getItem('profile'));
 
     // Makes a call to a public API route that
