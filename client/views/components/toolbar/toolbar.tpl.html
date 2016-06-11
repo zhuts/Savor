@@ -7,23 +7,52 @@
   <img class= "logo" src="/views/components/toolbar/SAVOR4XWHITEXBLACK.png">
     <span flex></span>
 
+    <md-input-container class="md-icon-float md-block" flex>
+      <md-icon><i class="material-icons" class="name"></i>search</md-icon>
+      <input ng-model="searchRestaurant" type="text" placeholder="Search Here">
+    </md-input-container>
+
     <md-button
       ui-sref="user"
       aria-label="Write Review"
       style="float:right" 
       ng-click="openReview()"
-      ng-if="toolbar.auth.isAuthenticated"
       aria-label="User">
       <i class="material-icons" class="name">mode_edit</i></md-icon>
     </md-button>
+    
+    <!-- Search bar here -->
 
-    <md-button
-      aria-label="Logout"
-      ui-sref="toolbar"
-      ng-if="toolbar.auth.isAuthenticated"
-      ng-click="toolbar.logout()">
-      Logout
-    </md-button>
+    <md-menu>
+      <md-button
+        aria-label="user"
+        ng-click="$mdOpenMenu($event)"
+        style="float:right"
+        ui-sref="userDropdown">
+        <img class="userToolbarPhoto" ng-src="{{ userOnRootScope.picture }}">
+      </md-button>
+      <md-menu-content>
+        <md-menu-item>
+          <md-button>
+            Friends
+          </md-button>
+        </md-menu-item>
+        <!-- <md-menu-item>
+          <md-button>
+            Edit
+          </md-button>
+        </md-menu-item> -->
+        <md-menu-item>
+          <md-button
+            aria-label="Logout"
+            ui-sref="toolbar"
+            ng-if="toolbar.auth.isAuthenticated"
+            ng-click="toolbar.logout()">
+            Logout
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
   
   </div>
   <span class="container" ng-if="!toolbar.auth.isAuthenticated">
