@@ -82,15 +82,25 @@ table {
   margin-bottom: 10px;
 }
 
+.loginBackground {
+  width: 100%;
+  height: 100vh;
+  background: url(https://s3-us-west-2.amazonaws.com/savorapp/bg-placeholder.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: repeat-y;
+  animation: animatedBackground 25s linear infinite;
+}
+
 html { 
   overflow-y: scroll; 
 }
-body {
-  background: #f0f0f0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #313131;
-  font-size: 62.5%;
-  line-height: 1;
+
+@keyframes animatedBackground {
+  from { background-position: 0 0; }
+  to { background-position: 0 -1000px; }
 }
 
 /*h1 is used on AuthO lock 'Log in' as default, only place we are
