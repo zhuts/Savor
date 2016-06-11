@@ -68,11 +68,14 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
     meal: "Peanut Butter, straight from the jar",
     restaurant: "your empty pantry",
     date: "whatevs"
-  },
-
-  ];
-  return {
-    meals: meals
+  }];
+  var addMeal = function(newMeal){
+    meals.push(newMeal);
   };
-})
+
+  return {
+    meals: meals,
+    addMeal: addMeal
+  };
+});
 

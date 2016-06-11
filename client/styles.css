@@ -211,11 +211,11 @@ p {
   padding-left: 20px;
 }
 
-#restaurantCount {
+/*#restaurantCount {
   padding-left: 20px;
   display: inline; 
   color: black;
-}
+}*/
 
 #container {
   display: block;
@@ -239,7 +239,7 @@ p {
   z-index: 100;
 }
 
-.ratinginfo {
+/*.ratinginfo {
   border-radius: 10px;
   display: inline-block;
   width: 460px;
@@ -284,7 +284,7 @@ p {
   -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.4);
   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.4);
   box-shadow: 0 1px 3px rgba(0,0,0,0.4);
-}
+}*/
 
 #recommendation {
   margin: 0 auto;

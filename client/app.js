@@ -67,8 +67,10 @@ angular.module('savor', [
   })
   .state('review', {
     url: '/review',
-    templateUrl: '/views/components/review/review.tpl.html',
-    controller: 'reviewController',
+    // templateUrl: '/views/components/review/review.tpl.html',
+    templateUrl: '/views/components/review/review.html',
+    // controller: 'reviewController',
+    controller: 'reviewCtrl',
   })
   .state('/', {
     url: '/',
