@@ -6,6 +6,8 @@ var cors = require('cors');
 var port = process.env.PORT || 4000;
 var morgan = require('morgan');
 var multer = require('multer');
+var handler = require('./handlers/handlers');
+var userController = require('./controllers/userController.js');
 
 var authEnvironment = require('./authEnvironment.js');
 
@@ -72,9 +74,6 @@ app.get('/sign-s3', function(req, res) {
 
 var upload = multer({storage: storage}).single('file');
 
-// API endpoints
-var handler = require('./handlers/handlers');
-
 // use this route with review submit button
 app.post('/api/restaurants', handler.addRestaurant);
 
@@ -100,9 +99,15 @@ app.delete('/api/users/:id', handler.deleteRestaurant);
 
 
 // User Routes
-app.get('/api/users/:id', handler.getUserData);
+app.get('/api/users/:id', function(req, res) {
+  userController.getUser(req, function(user) {
+    res.status(200).json(user);
+  });
+});
 
-app.post('/api/users/:id');
+app.post('/api/users/:id', function(req, res) {
+  handler.postToUserData(req);
+});
 
 //photo upload
 app.post('/uploads', function(req, res) {

@@ -48,6 +48,10 @@ module.exports = {
   
   getUserData: function(req, res) {
     
+  },
+  
+  postToUserData: function(req, res) {
+    //
   }
 };
 
