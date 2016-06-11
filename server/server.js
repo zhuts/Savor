@@ -99,19 +99,19 @@ app.delete('/api/users/:id', handler.deleteRestaurant);
 
 
 // User Routes
-app.get('/api/users/:id', function(req, res) {
+app.get('/api/users/', function(req, res) {
   userController.getUser(req, function(user) {
     res.status(200).json(user);
   });
 });
 
-app.post('/api/users/meals/:id', function(req, res) {
+app.post('/api/users/meals/', function(req, res) {
   userController.addMealToUser(req, function() {
     res.status(201).send("Meal added to user");
   });
 });
 
-app.post('/api/users/friends/:id', function(req, res) {
+app.post('/api/users/friends/', function(req, res) {
   userController.addFriendToUser(req, function() {
     res.status(201).send("Friend added to user");
   });

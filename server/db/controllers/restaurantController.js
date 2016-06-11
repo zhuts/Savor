@@ -1,4 +1,4 @@
-// Likely to be deleted
+// Likely to be unused
 
 var Restaurant = require('../models/restaurants.js');
 var User = require('./models/users.js');
