@@ -7,15 +7,6 @@ function toolbarController(auth, store, $location, ngDialog, $scope, $rootScope,
     vm.logout = logout;
     vm.auth = auth;
     
-    // if ($rootScope.isUserReallyAuthenticated) {
-    //   var test = JSON.parse(localStorage.getItem('profile'));
-    //   console.log('test it out ', test);
-    // }
-    var test = window.localStorage;
-    console.log('this is the ', test);
-        var test2 = window.localStorage.profile;
-    console.log('this is the second ', test);
-    function logout() {
       console.log("Logout Success");
       // The signout method on the auth service
       // sets isAuthenticated to false but we
