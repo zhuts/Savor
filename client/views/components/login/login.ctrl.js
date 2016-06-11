@@ -20,6 +20,7 @@ function loginController(auth, store, $location, ngDialog, $scope, $rootScope) {
         store.set('profile', profile);
         store.set('token', token);
         $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
+        $rootScope.userOnRootScope = profile;
         $location.path('/user');
         if (!$rootScope.$$phase) $rootScope.$apply();
       }, function(error) {

@@ -11,7 +11,6 @@
     
     // The vm.profile may be where the profile pictures gets pulled from
     vm.profile = JSON.parse(localStorage.getItem('profile'));
-    console.log(vm.profile);
     // $rootScope.userProfileImage = vm.profile.picture;
     // Makes a call to a public API route that
     // does not require authentication. We can

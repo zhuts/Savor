@@ -21,10 +21,10 @@
     <md-menu>
       <md-button
         aria-label="user"
-        ng-click="$mdOpenMenu($event)">
-        <!-- Need to pull user photo in to here -->
-        {{user.profile}}
-        <img class="userToolbarPhoto" ng-src="{{ user.profile.picture }}">
+        ng-click="$mdOpenMenu($event)"
+        style="float:right"
+        ui-sref="userDropdown">
+        <img class="userToolbarPhoto" ng-src="{{ userOnRootScope.picture }}">
       </md-button>
       <md-menu-content>
         <md-menu-item>
