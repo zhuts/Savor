@@ -32,7 +32,7 @@ data/
 uploads/
 
 # Authentication
-server/authCheck.js
+server/authEnvironment.js
 
 # Floobits
 .floo

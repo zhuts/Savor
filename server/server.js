@@ -7,7 +7,7 @@ var port = process.env.PORT || 4000;
 var morgan = require('morgan');
 var multer = require('multer');
 
-var authEnvironment = require('./authCheck.js');
+var authEnvironment = require('./authEnvironment.js');
 
 // Set up mongoose
 var mongoose = require('mongoose');
