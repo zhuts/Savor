@@ -114,6 +114,8 @@ angular.module('savor.review',['ngMaterial', 'ngMessages', 'material.svgAssetsCa
         return blob;
     }
 
+    // End of MIT protected function
+
     $scope.getSignedRequest = function(file){
       console.log(file, 'in signed req');
       var xhr = new XMLHttpRequest();
