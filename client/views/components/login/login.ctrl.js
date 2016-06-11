@@ -22,5 +22,6 @@ function loginController(auth, store, $location, ngDialog, $scope) {
         console.log(error);
       });
     }
+    // Immediately invoke to have pop-up on the first screen
     login();
 }
