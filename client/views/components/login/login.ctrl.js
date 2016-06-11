@@ -4,11 +4,16 @@ angular
 
 function loginController(auth, store, $location, ngDialog, $scope, $rootScope) {
     var vm = this;
+    console.log('the this is ', vm);
+    console.log('user authenticated ', vm.auth.isAuthenticated);
     vm.login = login;
     vm.auth = auth;
-    
+    $scope.isUserAuthenticated = vm.auth.isAuthenticated;
+    $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
+    console.log('the vm ', vm.auth);
     function login() {
       console.log("Login Success");
+      
       // The auth service has a signin method that
       // makes use of Auth0Lock. If authentication
       // is successful, the user's profile and token

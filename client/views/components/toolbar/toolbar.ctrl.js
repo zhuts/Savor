@@ -1,8 +1,8 @@
 angular
     .module('savor.toolbar', [])// we need to sort this out
-    .controller('toolbarController', ['toolbarFactory', 'ngDialog', '$scope']);
+    .controller('toolbarController', toolbarController);
 
-function toolbarController(auth, store, $location, ngDialog, $scope) {
+function toolbarController(auth, store, $location, ngDialog, $scope, $rootScope) {
     var vm = this;
     vm.logout = logout;
     vm.auth = auth;
