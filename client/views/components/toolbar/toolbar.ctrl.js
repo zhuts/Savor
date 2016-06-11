@@ -36,9 +36,4 @@ function toolbarController(auth, store, $location, ngDialog, $scope, $rootScope,
         className: 'ngdialog-theme-default dialogwidth800'
       });
     };
-    var originatorEv;
-    this.openMenu = function($mdOpenMenu, ev) {
-      originatorEv = ev;
-      $mdOpenMenu(ev);
-    };
 }
