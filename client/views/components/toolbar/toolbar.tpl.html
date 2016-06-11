@@ -23,7 +23,8 @@
         aria-label="user"
         ng-click="$mdOpenMenu($event)">
         <!-- Need to pull user photo in to here -->
-        <img class="userToolbarPhoto" src="/views/components/toolbar/SAVOR4XWHITE.png">
+        {{user.profile}}
+        <img class="userToolbarPhoto" ng-src="{{ user.profile.picture }}">
       </md-button>
       <md-menu-content>
         <md-menu-item>
