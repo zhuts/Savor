@@ -16,6 +16,7 @@ function toolbarController(auth, store, $location, ngDialog, $scope, $rootScope)
       auth.signout();
       store.remove('profile');
       store.remove('token');
+      $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
       $location.path('/');
       if (!$rootScope.$$phase) $rootScope.$apply();
     }
