@@ -3,13 +3,15 @@ var express = require('express');
 var app = express();
 var jwt = require('express-jwt');
 var cors = require('cors');
-var port = process.env.PORT || 4000;
 var morgan = require('morgan');
 var multer = require('multer');
+var bodyParser = require('body-parser');
 var handler = require('./handlers/handlers');
-var userController = require('./controllers/userController.js');
+var userController = require('./db/controllers/userController.js');
 
 var authEnvironment = require('./authEnvironment.js');
+
+var port = process.env.PORT || 4000;
 
 // Set up mongoose
 var mongoose = require('mongoose');
@@ -22,9 +24,9 @@ db.on('error', console.error.bind(console, "There's an error"));
 db.once('open', function callback(){console.log('successfully logged into mongo');  });
 
 // Middleware
-var bodyParser = require('body-parser');
-app.use(express.static(__dirname + '/../client'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static(__dirname + '/../client'));
 app.use(morgan('dev'));
 app.use(cors());
 
@@ -99,9 +101,27 @@ app.delete('/api/users/:id', handler.deleteRestaurant);
 
 
 // User Routes
-app.get('/api/users/', function(req, res) {
-  userController.getUser(req, function(user) {
+app.get('/api/users/', function(req,res) {
+  userController.getAll(function(users) {
+    res.status(200).json(users);
+  });
+});
+
+app.get('/api/users/:id', function(req, res) {
+  var id = req.params.id;
+  console.log(id);
+  userController.getUser(id, function(user) {
     res.status(200).json(user);
+  });
+});
+
+app.post('/api/users/', function(req, res) {
+  console.log('the post req ', req.body);
+  var id = req.body.userID;
+  var email = req.body.email;
+  var username = req.body.username;
+  userController.checkOrCreateUser(id, email, username, function(user) {
+    res.status(201).send(user);
   });
 });
 
