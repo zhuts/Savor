@@ -69,7 +69,10 @@
 </head>
 
 <body ng-app="savor" ng-controller="savorCtrl">
-
+<h2 ng-if="!toolbar.auth.isAuthenticated">hello with ! {{toolbar.auth.isAuthenticated}}</h2>
+<h2 ng-if="toolbar.auth.isAuthenticated">hello without !</h2>
+<h2 ng-if="!login.auth.isAuthenticated">login hello with !</h2>
+<h2 ng-if="login.auth.isAuthenticated">login hello without !</h2>
 <!-- Display toolbar if the user is authenticated only -->
 <!-- <toolbar></toolbar> -->
 <!-- <span class="containerbackground"> </span> -->

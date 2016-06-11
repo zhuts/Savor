@@ -27,10 +27,6 @@ app.use(morgan('dev'));
 app.use(cors());
 
 var authCheck = jwt({
-  // secret: new Buffer('0UpBbiHuBz0B45N27qKkqhZnJcOrgHvT6y5kVUQl-O1GSuWisuN3RKKrxjwgvqky', 'base64'),
-  // audience: 'VJw1CCaxKJ4FdkqPamlBxUUrjuGapt8e'
-  // secret: new Buffer('n5DQCJJ7I0UVxJQDsyLWlWyw-9k', 'base64'),
-  // audience: 'm2fcwxHoAPCGPkxyNyQMIAG0kn4'
   secret: new Buffer(authEnvironment.secret, 'base64'),
   // audience is clientID
   audience: authEnvironment.audience

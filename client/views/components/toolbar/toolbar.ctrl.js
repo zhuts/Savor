@@ -25,6 +25,6 @@ function toolbarController(auth, store, $location, ngDialog, $scope) {
         controller: 'reviewController',
         scope: $scope,
         className: 'ngdialog-theme-default dialogwidth800'
-      })
-    }
+      });
+    };
 }

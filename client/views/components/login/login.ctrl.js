@@ -2,7 +2,7 @@ angular
     .module('savor.login', [])
     .controller('loginController', loginController);
 
-function loginController(auth, store, $location, ngDialog, $scope) {
+function loginController(auth, store, $location, ngDialog, $scope, $rootScope) {
     var vm = this;
     vm.login = login;
     vm.auth = auth;
