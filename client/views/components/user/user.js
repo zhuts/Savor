@@ -8,20 +8,20 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
 .controller('userCtrl', function($scope, $http, _, Meals) {
   angular.extend($scope, Meals);
 
-  // $scope.profile = JSON.parse(localStorage.getItem('profile'));
-  // function getAll() {
-  //   var user = JSON.parse(window.localStorage.profile).email;
-  //   $http.get('/api/restaurants').then(function(res) {
-  //     $scope.restaurants = _.filter(res.data,function(restaurant) {
-  //       if(restaurant.userEmail === user) {
-  //         return true;
-  //       } else {
-  //         return false;
-  //       }
-  //     });
-  //   });
-  // }
-  // getAll();
+  $scope.profile = JSON.parse(localStorage.getItem('profile'));
+  function getAll() {
+    var user = JSON.parse(window.localStorage.profile).email;
+    $http.get('/api/restaurants').then(function(res) {
+      $scope.restaurants = _.filter(res.data,function(restaurant) {
+        if(restaurant.userEmail === user) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    });
+  }
+  getAll();
 })
 
 .factory('Meals', function() {
