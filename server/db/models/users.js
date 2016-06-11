@@ -15,6 +15,9 @@ var userSchema = new mongoose.Schema({
 	},
 	meals: {
 		type: Array
+	},
+	friends: {
+		type: Array
 	}
 });
 module.exports = mongoose.model('User', userSchema);
