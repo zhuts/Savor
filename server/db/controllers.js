@@ -77,5 +77,9 @@ module.exports = {
         });
       }
     });
+  },
+  
+  getUser: function(id, callback) {
+    // code here
   }
 };

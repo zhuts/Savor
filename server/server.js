@@ -97,6 +97,13 @@ app.put('/api/restaurants:id', handler.updateRestaurantInfo);
 
 app.delete('/api/users/:id', handler.deleteRestaurant);
 
+
+
+// User Routes
+app.get('/api/users/:id', handler.getUserData);
+
+app.post('/api/users/:id');
+
 //photo upload
 app.post('/uploads', function(req, res) {
     upload(req,res,function(err){
