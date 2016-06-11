@@ -3,7 +3,7 @@ underscore.factory('_', function() {
   return window._; //Underscore must already be loaded on the page
 });
 
-angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'underscore', 'masonry'])
+angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'underscore', 'wu.masonry'])
 
 .controller('userCtrl', function($scope, $http, _, Meals) {
   angular.extend($scope, Meals);

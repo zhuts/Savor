@@ -10,7 +10,8 @@ angular.module('savor', [
   'ui.router',
   'ngDialog',
   'ngMaterial',
-  'material.svgAssetsCache'
+  'material.svgAssetsCache',
+  'wu.masonry'
 ])
 
 .controller('savorCtrl',['$scope', '$http', '$location', '$stateParams', function savorCtrl($scope, $http, $location, $stateParams) {

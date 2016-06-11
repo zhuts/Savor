@@ -1,10 +1,12 @@
-<div class='md-padding' layout="row" layout-wrap>
-  <md-card style="width: 300px;" data-ng-repeat="meal in meals">
-    <img src="http://placehold.it/150x150">
-    <md-card-content>
-      <h2>{{meal.meal}}</h2>
-      <p>{{meal.restaurant}}</p>
-      <p>{{meal.date}}</p>
-    </md-card-content>
-  </md-card>
-</div>
+<md-content masonry class='md-padding' layout="row" layout-wrap>
+  <div class="masonry-brick" ng-repeat="meal in meals">
+	  <md-card>
+	    <img src="http://placehold.it/150x150">
+	    <md-card-content>
+	      <h2>{{meal.meal}}</h2>
+	      <p>{{meal.restaurant}}</p>
+	      <p>{{meal.date}}</p>
+	    </md-card-content>
+	  </md-card>
+	 </div>
+</md-content>
