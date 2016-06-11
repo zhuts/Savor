@@ -88,10 +88,8 @@
 </head>
 
 <body ng-app="savor" ng-controller="savorCtrl">
-
-<!-- Display toolbar if the user is authenticated only -->
-<toolbar ng-show="isUserReallyAuthenticated"></toolbar>
-<div ui-view=''></div>
-
+  <!-- Display toolbar if the user is authenticated only -->
+  <toolbar ng-show="isUserReallyAuthenticated"></toolbar>
+  <div ui-view=''></div>
 </body>
 </html>
