@@ -1,5 +1,4 @@
 <div ng-controller="reviewController" layout="column" layout-padding="" ng-cloak="">
-
   <md-content class="md-no-momentum">
 
     <md-input-container class="md-icon-float md-block">
@@ -42,30 +41,17 @@
       <input ng-model="restaurant.review" ng-trim="false" maxlength="200" type="text" placeholder="200 Characters"><br><br>
       <p ng-show="photoUploaded">{{picName}} uploaded!</p>
     </md-input-container>
-
-    <div layout="row">
-      <!-- UPLOAD PIC BUTTON -->
-<!-- <input type="file" ngf-select ng-model="up.file" name="file" /> -->
-
-      <!-- <input type="file" id="file-input">
-      <p id="status">Please select a file</p> -->
-      <img id="preview" src="">
-
-      <input name="file" type="file" file />
-      <md-button class="md-buton md-raised md-primary" ng-click="upload()">UPLOAD PHOTO</md-button>
-
-<!--       <form method="POST" action="/save-details">
-        <input type="hidden" id="avatar-url" name="avatar-url" value="/images/default.png">
-        <input type="text" name="username" placeholder="Username"><br>
-        <input type="text" name="full-name" placeholder="Full name"><br><br>
-        <input type="submit" value="Update profile">
-      </form> -->
-<!-- 
-      <input class="ng-hide" ngf-select ng-model="up.file" type="file" id="file" name="file">
-      <label for="file" class="md-button md-raised md-primary">CHOOSE PHOTO</label>
-      <md-button class="md-buton md-raised md-primary" ng-click="add()">UPLOAD PHOTO</md-button> -->
-      <md-button class="md-warn md-raised md-hue-2" ng-click="sendPost()">SUBMIT!</md-button>
+      
+    <div class="crop-container">
+      <div class="crop-area">
+        <div class="file-input">Select an image file: <input type="file" id="fileInput" /></div>
+          <img-crop image="myImage" result-image="myCroppedImage" area-type="square"></img-crop>
+        </div>
+        <div class="cropped-area">
+          <div class="crop-label">Cropped Image:</div>
+          <div><img ng-src="{{myCroppedImage}}" /></div>
+        </div>
 
     </div>
-
+    <md-button class="md-warn md-raised md-hue-2" ng-click="upload()">SUBMIT!</md-button>
 </div>

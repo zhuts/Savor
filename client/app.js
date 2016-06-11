@@ -42,7 +42,6 @@ angular.module('savor', [
     });
   }
 }])
-
 .config(function($provide, authProvider, $urlRouterProvider, $stateProvider, $httpProvider, jwtInterceptorProvider) {
 
   authProvider.init({

@@ -1,8 +1,5 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
 
+/* CSS reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,7 +45,46 @@ table {
 }
 /** end of css reset **/
 
-html { overflow-y: scroll; }
+.crop-area {
+  overflow: hidden;
+  width: 405px;
+  height: 250px;
+  float: left;
+  background-color: #E4E4E4;
+  padding: 20px 10px 30px 10px;
+}
+
+.file-input {
+  width: 330px;
+  float: left;
+}
+
+.cropped-area {
+  padding: 10px;
+  background-color: #E4E4E4;
+  margin-left: 20px;
+  overflow: hidden;
+  width: 250px;
+  float: left;
+}
+
+.cropped-area img {
+  height: 223px;
+}
+
+.crop-container {
+  width: 100%;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.crop-label {
+  margin-bottom: 10px;
+}
+
+html { 
+  overflow-y: scroll; 
+}
 body {
   background: #f0f0f0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
