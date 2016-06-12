@@ -9,6 +9,15 @@ function loginController(auth, store, $location, ngDialog, $scope, $rootScope) {
     
     $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
     
+    var sendUserPost = function (data) {
+    $http({
+      method: "POST",
+      data: data,
+      url: '/api/users/'
+    });
+  };
+    
+    
     function login() {
       console.log("Login Success");
       
@@ -22,9 +31,14 @@ function loginController(auth, store, $location, ngDialog, $scope, $rootScope) {
         $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
         $rootScope.userOnRootScope = profile;
         
-        // POST request to the database the username
-        // add a userAvatar
-        
+        // ************* check this userObject out *************
+        var userObject = {
+          userID: profile.userID,
+          email: profile.email,
+          username: profile.username,
+          userAvatar: profile.picture
+        };
+        sendUserPost(userObject);
         
         $location.path('/user');
         if (!$rootScope.$$phase) $rootScope.$apply();
