@@ -21,6 +21,11 @@ function loginController(auth, store, $location, ngDialog, $scope, $rootScope) {
         store.set('token', token);
         $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
         $rootScope.userOnRootScope = profile;
+        
+        // POST request to the database the username
+        // add a userAvatar
+        
+        
         $location.path('/user');
         if (!$rootScope.$$phase) $rootScope.$apply();
       }, function(error) {

@@ -9,6 +9,19 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
   angular.extend($scope, Meals);
 
   $scope.profile = JSON.parse(localStorage.getItem('profile'));
+  
+  // getAll function that will query the user db
+  // return all the meals
+  
+  // getAllFrhoiends function that will query the db for 
+  
+  function getAll(id) {
+    // check this out
+    var id = id || $scope.userOnRootScope.userID;
+    $http.get('/api/users/' + id).then(function(res) {
+      console.log(res);
+    })
+  }
   function getAll() {
     var user = JSON.parse(window.localStorage.profile).email;
     $http.get('/api/restaurants').then(function(res) {

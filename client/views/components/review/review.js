@@ -26,11 +26,16 @@ angular.module('savor.review',[
       image: $scope.myCroppedImageUrl
     });
     $scope.addReview($scope.meals, data);
+    
+    
+    // need to update sendPost
     $scope.sendPost(data);
     ngDialog.close();
   };
 
   //TODO: refactor for new data form, execute after/simultaneous to adding to new reviews to meals[] in users.js
+  // update this
+  // this is sending a meal to the database
   $scope.sendPost = function (data) {
     //useremail file is parsed into the windowlocal storage
     var config = {
