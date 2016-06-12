@@ -22,7 +22,7 @@ module.exports = {
   
   // We will use this with a post so we can have the 
   // necessary information to create a user
-  checkOrCreateUser: function(id, email, username, callback) {
+  checkOrCreateUser: function(id, email, username, userAvatar, callback) {
     User.findOne({userID: id}).exec(function(err, foundUser) {
       if (foundUser) {
         console.log('Found the user');
@@ -32,7 +32,8 @@ module.exports = {
         var newUser = {
           userID: id,
           email: email,
-          username: username
+          username: username,
+          userAvatar: userAvatar
         };
         User.create(newUser);
         callback(newUser);
