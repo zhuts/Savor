@@ -15,10 +15,6 @@ var userSchema = mongoose.Schema({
 		default: '',
 		unique: true
 	},
-	email: {
-		type: String,
-		default: '',
-	},
 	meals: {
 		type: Array
 	},

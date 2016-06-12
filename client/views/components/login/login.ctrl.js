@@ -10,6 +10,7 @@ function loginController(auth, store, $location, ngDialog, $scope, $rootScope, $
     $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
     
     var sendUserPost = function (data) {
+      console.log('this is the data ', data);
     $http({
       method: "POST",
       data: data,
@@ -31,13 +32,13 @@ function loginController(auth, store, $location, ngDialog, $scope, $rootScope, $
         $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
         $rootScope.userOnRootScope = profile;
         
-        // ************* check this userObject out *************
+        // Create a userObject to send to the database
         var userObject = {
-          userID: profile.userID,
-          email: profile.email,
-          username: profile.username,
+          userID: profile.user_id,
+          username: profile.nickname,
           userAvatar: profile.picture
         };
+        // Create/find this user on the database
         sendUserPost(userObject);
         
         $location.path('/user');
