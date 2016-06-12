@@ -15,6 +15,8 @@ angular.module('savor', [
 ])
 
 .controller('savorCtrl',['$scope', '$http', '$location', '$stateParams', function savorCtrl($scope, $http, $location, $stateParams) {
+  
+  // ************** can delete/comment out these ones most likely **************
   function getOne() {
     var id = $stateParams.id;
     $http.get('/api/restaurants/'+id).then(function(res) {

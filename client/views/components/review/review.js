@@ -14,37 +14,31 @@ angular.module('savor.review',[
   $scope.myImage='';
   $scope.myCroppedImage='';
   $scope.myCroppedImageUrl = '';
-
+  
+  // *************** Check to ensure all the appropriate fields are here *****************
   $scope.newReview = function(){
     console.log($scope);
     var data = ({
       meal: $scope.meal.meal,
       restaurant: $scope.meal.restaurant,
-      userEmail: JSON.parse(window.localStorage.profile).email,
       notes: $scope.meal.notes,
       date: $scope.meal.date,
       image: $scope.myCroppedImageUrl
     });
     $scope.addReview($scope.meals, data);
+    
     $scope.sendPost(data);
     ngDialog.close();
   };
-
-  //TODO: refactor for new data form, execute after/simultaneous to adding to new reviews to meals[] in users.js
+  
   $scope.sendPost = function (data) {
-    //useremail file is parsed into the windowlocal storage
-    var config = {
-      headers : {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-      }
-    };
     $http({
       method: "POST",
       data: data,
-      url: '/api/restaurants'
+      url: '/api/users/meals/'
     });
-    $scope.photoUploaded = false;
   };
+
 
   // attach event listener to file input to detect when a file is loaded
     angular.element(document).ready(function () {

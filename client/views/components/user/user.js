@@ -9,31 +9,21 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
   angular.extend($scope, Meals);
 
   $scope.profile = JSON.parse(localStorage.getItem('profile'));
-  function getAll() {
-    var user = JSON.parse(window.localStorage.profile).email;
-    $http.get('/api/restaurants').then(function(res) {
-      $scope.restaurants = _.filter(res.data,function(restaurant) {
-        if(restaurant.userEmail === user) {
-          return true;
-        } else {
-          return false;
-        }
-      });
-
-      $scope.restaurants.forEach(function(meal) {
-        var unique = _.reduce($scope.meals, function(acc, meal1) {
-          if (meal.meal === meal1.meal) {
-            acc = true;
-          }
-          return acc;
-        }, false);
-        if (!unique) {
-          $scope.meals.push(meal);
-        }
-      })
+  
+  var friends;
+  function getAll(id) {
+    // check this out
+    var id = id || $scope.userOnRootScope.userID;
+    $http.get('/api/users/' + id).then(function(res) {
+      console.log(res);
+      $scope.meals = res.body.user.meals;
+      friends = res.body.user.friends;
     });
   }
   getAll();
+  
+  // Create a getAllFriends function that will query the db for all of a users friends 
+  // Utilize the friends variable
 })
 
 .factory('Meals', function() {

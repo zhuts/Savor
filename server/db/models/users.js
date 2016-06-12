@@ -6,6 +6,10 @@ var userSchema = mongoose.Schema({
 		default: '',
 		unique: true,
 	},
+	userAvatar: {
+		type: String,
+		default: '',
+	},
 	username: {
 		type: String,
 		default: '',

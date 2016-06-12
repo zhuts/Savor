@@ -111,7 +111,8 @@ app.post('/api/users/', function(req, res) {
   var id = req.body.userID;
   var email = req.body.email;
   var username = req.body.username;
-  userController.checkOrCreateUser(id, email, username, function(user) {
+  var userAvatar = req.body.userAvatar;
+  userController.checkOrCreateUser(id, email, username, userAvatar, function(user) {
     res.status(201).send(user);
   });
 });
