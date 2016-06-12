@@ -52,21 +52,31 @@ module.exports = {
     });
   },
   
-  addMealToUser: function(req, callback) {
-    var id = req.body.userID;
-    var meal = req.body.meal;
-    
-    User.findOne({userID: id}).exec(function(err, foundUser) {
-      foundUser.meals.push(meal);
+  addMealToUser: function(id, meal, callback) {
+    // var id = req.body.userID;
+    // var meal = req.body.meal;
+    // meal = {restaurant: fsdff, notes: dfsfds, image: fsdfsd}
+    User.update({userID: id}, {$push: {"meals": meal}}, function(err, foundUser) {
+      if (foundUser) {
+        callback(foundUser);
+      } else {
+        console.log('There was an error');
+        callback(foundUser);
+      }
     });
     
   },
   
-  addFriendToUser: function(req, callback) {
-    var id = req.body.userID;
-    var friend = req.body.friend;
-    User.findOne({userID: id}).exec(function(err, foundUser) {
-      foundUser.friends.push(friend);
+  addFriendToUser: function(id, friend, callback) {
+    // var id = req.body.userID;
+    // var friend = req.body.friend;
+    User.update({userID: id}, {$push: {"friends": friend}}, function(err, foundUser) {
+      if (foundUser) {
+        callback(foundUser);
+      } else {
+        console.log('There was an error');
+        callback(foundUser);
+      }
     });
-  }
+   }
 };

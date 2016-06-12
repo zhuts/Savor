@@ -101,20 +101,22 @@ app.delete('/api/users/:id', handler.deleteRestaurant);
 
 
 // User Routes
+// Get all users, useful for testing mostly
 app.get('/api/users/', function(req,res) {
   userController.getAll(function(users) {
     res.status(200).json(users);
   });
 });
 
+// Get one specific user's information
 app.get('/api/users/:id', function(req, res) {
   var id = req.params.id;
-  console.log(id);
   userController.getUser(id, function(user) {
     res.status(200).json(user);
   });
 });
 
+// For logging in, will either create a user or just return the found user
 app.post('/api/users/', function(req, res) {
   console.log('the post req ', req.body);
   var id = req.body.userID;
@@ -125,14 +127,24 @@ app.post('/api/users/', function(req, res) {
   });
 });
 
+// Add a meal to a user
 app.post('/api/users/meals/', function(req, res) {
-  userController.addMealToUser(req, function() {
+  // var id = req.body.userID;
+  // var meal = req.body.meal;
+  var id = '5';
+  var meal = {
+    name: 'five'
+  };
+  userController.addMealToUser(id, meal, function() {
     res.status(201).send("Meal added to user");
   });
 });
 
+// Add a friend to a user
 app.post('/api/users/friends/', function(req, res) {
-  userController.addFriendToUser(req, function() {
+  var id = req.body.userID;
+  var friend = req.body.friend;
+  userController.addFriendToUser(id, friend, function() {
     res.status(201).send("Friend added to user");
   });
 });

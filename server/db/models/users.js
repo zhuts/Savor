@@ -16,12 +16,10 @@ var userSchema = mongoose.Schema({
 		default: '',
 	},
 	meals: {
-		type: Array,
-		default: []
+		type: Array
 	},
 	friends: {
-		type: Array,
-		default: []
+		type: Array
 	}
 });
 
