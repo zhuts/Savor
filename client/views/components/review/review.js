@@ -17,16 +17,17 @@ angular.module('savor.review',[
   
   // *************** Check to ensure all the appropriate fields are here *****************
   $scope.newReview = function(){
-    console.log($scope);
+    
+    var legibleDate = $scope.meal.date.toDateString();
     var data = ({
+      userID: $scope.userOnRootScope.user_id,
       meal: $scope.meal.meal,
       restaurant: $scope.meal.restaurant,
       notes: $scope.meal.notes,
-      date: $scope.meal.date,
+      date: legibleDate,
       image: $scope.myCroppedImageUrl
     });
     $scope.addReview($scope.meals, data);
-    
     $scope.sendPost(data);
     ngDialog.close();
   };
@@ -87,7 +88,7 @@ angular.module('savor.review',[
       var blobData = dataURItoBlob(base64Data);
       blobData.name = filename;
       $scope.getSignedRequest(blobData);
-    }
+    };
 
     /*
     The MIT License (MIT)
@@ -134,7 +135,7 @@ angular.module('savor.review',[
         }
       };
       xhr.send();
-    }
+    };
 
     $scope.uploadFile = function(file, signedRequest, url){
       var xhr = new XMLHttpRequest();
@@ -152,7 +153,7 @@ angular.module('savor.review',[
         }
       };
       xhr.send(file);
-    }
+    };
 })
 
 .factory('Reviews', function($http){

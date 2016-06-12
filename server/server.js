@@ -107,7 +107,6 @@ app.get('/api/users/:id', function(req, res) {
 
 // For logging in, will either create a user or just return the found user
 app.post('/api/users/', function(req, res) {
-  console.log('the post req ', req.body);
   var id = req.body.userID;
   var email = req.body.email;
   var username = req.body.username;
@@ -119,9 +118,8 @@ app.post('/api/users/', function(req, res) {
 
 // Add a meal to a user
 app.post('/api/users/meals/', function(req, res) {
-  var id = req.body.userID;
-  var meal = req.body.meal;
-  userController.addMealToUser(id, meal, function() {
+  var mealObject = req.body;
+  userController.addMealToUser(mealObject, function() {
     res.status(201).send("Meal added to user");
   });
 });

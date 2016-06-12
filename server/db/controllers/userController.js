@@ -41,8 +41,9 @@ module.exports = {
     });
   },
   
-  addMealToUser: function(id, meal, callback) {
-    User.update({userID: id}, {$push: {"meals": meal}}, function(err, foundUser) {
+  addMealToUser: function(mealObject, callback) {
+    var id = mealObject.userID;
+    User.update({userID: id}, {$push: {"meals": mealObject}}, function(err, foundUser) {
       if (foundUser) {
         callback(foundUser);
       } else {
