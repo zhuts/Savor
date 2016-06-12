@@ -76,28 +76,18 @@ app.get('/sign-s3', function(req, res) {
 
 var upload = multer({storage: storage}).single('file');
 
-// use this route with review submit button
-app.post('/api/restaurants', handler.addRestaurant);
+// // use this route with review submit button
+// app.post('/api/restaurants', handler.addRestaurant);
 
-app.get('/api/private', handler.getRestaurantsByUser);
+// app.get('/api/private', handler.getRestaurantsByUser);
 
-app.get('/api/public', function(req, res) {
-  res.json({ message: "Hello from a public endpoint! You don't need to be authenticated to see this." });
-});
+// app.get('/api/public', function(req, res) {
+//   res.json({ message: "Hello from a public endpoint! You don't need to be authenticated to see this." });
+// });
 
-app.get('/api/private', authCheck, function(req, res) {
-  res.json({ message: "Hello from a private endpoint! You DO need to be authenticated to see this." });
-});
-
-app.get('/api/restaurants', handler.getRestaurants);
-
-app.get('/api/restaurants/:id', handler.getOneRestaurant);
-
-
-app.put('/api/restaurants:id', handler.updateRestaurantInfo);
-
-app.delete('/api/users/:id', handler.deleteRestaurant);
-
+// app.get('/api/private', authCheck, function(req, res) {
+//   res.json({ message: "Hello from a private endpoint! You DO need to be authenticated to see this." });
+// });
 
 
 // User Routes
@@ -129,12 +119,8 @@ app.post('/api/users/', function(req, res) {
 
 // Add a meal to a user
 app.post('/api/users/meals/', function(req, res) {
-  // var id = req.body.userID;
-  // var meal = req.body.meal;
-  var id = '5';
-  var meal = {
-    name: 'five'
-  };
+  var id = req.body.userID;
+  var meal = req.body.meal;
   userController.addMealToUser(id, meal, function() {
     res.status(201).send("Meal added to user");
   });
@@ -142,12 +128,8 @@ app.post('/api/users/meals/', function(req, res) {
 
 // Add a friend to a user
 app.post('/api/users/friends/', function(req, res) {
-  // var id = req.body.userID;
-  // var friend = req.body.friend;
-    var id = '5';
-  var friend = {
-    name: 'joe'
-  };
+  var id = req.body.userID;
+  var friend = req.body.friend;
   userController.addFriendToUser(id, friend, function() {
     res.status(201).send("Friend added to user");
   });
