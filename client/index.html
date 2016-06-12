@@ -95,5 +95,14 @@
   <!-- <script src="/views/components/login/login.dir.js"></script> -->
   <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
+
+  <!-- Custom logo animation -->
+  <script src="/views/components/login/logo.js"></script>
+</head>
+
+<body ng-app="savor" ng-controller="savorCtrl">
+  <!-- Display toolbar if the user is authenticated only -->
+  <toolbar ng-show="isUserReallyAuthenticated"></toolbar>
+  <div ui-view=''></div>
 </body>
 </html>

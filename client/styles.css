@@ -45,6 +45,32 @@ table {
 }
 /** end of css reset **/
 
+#output{
+  position: absolute;
+  z-index: 10002;
+  text-transform:uppercase;
+  color:#fdf6f0;
+  font-size:6em;
+  font-weight:bold;
+  text-align:left;
+  text-shadow:0.08em 0em #940f08;
+}
+
+svg {
+  height: 75px;
+  width: 75px;
+  padding-left: 15px;
+}
+
+svg path {
+  fill: #fff;
+  /*fill: #940f08;*/
+}
+
+.hidden { 
+  display: none;
+}
+
 .crop-area {
   overflow: hidden;
   width: 405px;
