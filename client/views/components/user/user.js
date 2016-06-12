@@ -12,12 +12,10 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
   
   var friends;
   function getAll(id) {
-    // check this out
-    var id = id || $scope.userOnRootScope.userID;
+    id = id || $scope.userOnRootScope.user_id;
     $http.get('/api/users/' + id).then(function(res) {
-      console.log(res);
-      $scope.meals = res.body.user.meals;
-      friends = res.body.user.friends;
+      $scope.meals = res.data.meals;
+      friends = res.data.friends;
     });
   }
   getAll();
