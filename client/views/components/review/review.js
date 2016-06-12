@@ -1,4 +1,12 @@
-angular.module('savor.review',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngDialog', 'ngFileUpload', 'ngImgCrop', 'savor.user'])
+angular.module('savor.review',[
+  'ngMaterial',
+  'ngMessages',
+  'material.svgAssetsCache',
+  'ngDialog',
+  'ngFileUpload',
+  'ngImgCrop',
+  'savor.user',
+  'wu.masonry'])
 .controller('reviewCtrl', function($scope, $http, ngDialog, Upload, $window, Reviews, Meals) {
   angular.extend($scope, Reviews);
   angular.extend($scope, Meals);

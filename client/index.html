@@ -3,8 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>Savor</title>
+
+</head>
+
+<body ng-app="savor" ng-controller="savorCtrl">
+  <!-- Display toolbar if the user is authenticated only -->
+  <toolbar ng-show="isUserReallyAuthenticated"></toolbar>
+  <div ui-view=''></div>
+
   <!-- Auth0's lock widget library -->
   <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
+  <!-- Masonry -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/jquery-bridget/jquery-bridget.js"></script>
+  <script src="bower_components/ev-emitter/ev-emitter.js"></script>
+  <script src="bower_components/desandro-matches-selector/matches-selector.js"></script>
+  <script src="bower_components/fizzy-ui-utils/utils.js"></script>
+  <script src="bower_components/get-size/get-size.js"></script>
+  <script src="bower_components/outlayer/item.js"></script>
+  <script src="bower_components/outlayer/outlayer.js"></script>
+  <script src="bower_components/masonry/masonry.js"></script>
+  <script src="bower_components/imagesloaded/imagesloaded.js"></script>
 
   <!-- AngularJS -->
   <script src="bower_components/angular/angular.js"></script>
@@ -55,16 +74,6 @@
   <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
 
   <!--MASONRY-->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/jquery-bridget/jquery-bridget.js"></script>
-  <script src="bower_components/ev-emitter/ev-emitter.js"></script>
-  <script src="bower_components/desandro-matches-selector/matches-selector.js"></script>
-  <script src="bower_components/fizzy-ui-utils/utils.js"></script>
-  <script src="bower_components/get-size/get-size.js"></script>
-  <script src="bower_components/outlayer/item.js"></script>
-  <script src="bower_components/outlayer/outlayer.js"></script>
-  <script src="bower_components/masonry/masonry.js"></script>
-  <script src="bower_components/imagesloaded/imagesloaded.js"></script>
   <script src="bower_components/angular-masonry/angular-masonry.js"></script>
 
   <!-- My Scripts -->
@@ -84,12 +93,5 @@
   <!-- <script src="/views/components/login/login.dir.js"></script> -->
   <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
-
-</head>
-
-<body ng-app="savor" ng-controller="savorCtrl">
-  <!-- Display toolbar if the user is authenticated only -->
-  <toolbar ng-show="isUserReallyAuthenticated"></toolbar>
-  <div ui-view=''></div>
 </body>
 </html>
