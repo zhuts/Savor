@@ -6,7 +6,6 @@ var cors = require('cors');
 var morgan = require('morgan');
 var multer = require('multer');
 var bodyParser = require('body-parser');
-var handler = require('./handlers/handlers');
 var userController = require('./db/controllers/userController.js');
 
 var authEnvironment = require('./authEnvironment.js');
