@@ -17,8 +17,12 @@ angular.module('savor.review',[
   
   // *************** Check to ensure all the appropriate fields are here *****************
   $scope.newReview = function(){
-    console.log($scope);
+    
+    // ************ TODO *****************
+    // Need to do something to convert the date to something legible
+    // Currently shows up as Mon Jun 06 2016 00:00:00 GMT-0700 (PDT)
     var data = ({
+      userID: $scope.userOnRootScope.user_id,
       meal: $scope.meal.meal,
       restaurant: $scope.meal.restaurant,
       notes: $scope.meal.notes,
@@ -26,7 +30,6 @@ angular.module('savor.review',[
       image: $scope.myCroppedImageUrl
     });
     $scope.addReview($scope.meals, data);
-    
     $scope.sendPost(data);
     ngDialog.close();
   };
@@ -87,7 +90,7 @@ angular.module('savor.review',[
       var blobData = dataURItoBlob(base64Data);
       blobData.name = filename;
       $scope.getSignedRequest(blobData);
-    }
+    };
 
     /*
     The MIT License (MIT)
@@ -134,7 +137,7 @@ angular.module('savor.review',[
         }
       };
       xhr.send();
-    }
+    };
 
     $scope.uploadFile = function(file, signedRequest, url){
       var xhr = new XMLHttpRequest();
@@ -152,7 +155,7 @@ angular.module('savor.review',[
         }
       };
       xhr.send(file);
-    }
+    };
 })
 
 .factory('Reviews', function($http){

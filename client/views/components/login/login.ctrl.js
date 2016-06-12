@@ -10,7 +10,6 @@ function loginController(auth, store, $location, ngDialog, $scope, $rootScope, $
     $rootScope.isUserReallyAuthenticated = vm.auth.isAuthenticated;
     
     var sendUserPost = function (data) {
-      console.log('this is the data ', data);
     $http({
       method: "POST",
       data: data,
@@ -20,7 +19,6 @@ function loginController(auth, store, $location, ngDialog, $scope, $rootScope, $
     
     
     function login() {
-      console.log("Login Success");
       
       // The auth service has a signin method that
       // makes use of Auth0Lock. If authentication

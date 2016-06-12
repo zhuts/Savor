@@ -121,6 +121,8 @@ app.post('/api/users/', function(req, res) {
 app.post('/api/users/meals/', function(req, res) {
   var id = req.body.userID;
   var meal = req.body.meal;
+  console.log('the req.body ', req.body);
+  // currently the req.body is an object with meal, restaurant, notes, date, and image
   userController.addMealToUser(id, meal, function() {
     res.status(201).send("Meal added to user");
   });
