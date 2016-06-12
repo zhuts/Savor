@@ -142,8 +142,12 @@ app.post('/api/users/meals/', function(req, res) {
 
 // Add a friend to a user
 app.post('/api/users/friends/', function(req, res) {
-  var id = req.body.userID;
-  var friend = req.body.friend;
+  // var id = req.body.userID;
+  // var friend = req.body.friend;
+    var id = '5';
+  var friend = {
+    name: 'joe'
+  };
   userController.addFriendToUser(id, friend, function() {
     res.status(201).send("Friend added to user");
   });
