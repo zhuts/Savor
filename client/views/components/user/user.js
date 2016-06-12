@@ -20,6 +20,7 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
   }
   getAll();
   
+  // *********** TODO **************
   // Create a getAllFriends function that will query the db for all of a users friends 
   // Utilize the friends variable
 })

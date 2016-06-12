@@ -18,15 +18,13 @@ angular.module('savor.review',[
   // *************** Check to ensure all the appropriate fields are here *****************
   $scope.newReview = function(){
     
-    // ************ TODO *****************
-    // Need to do something to convert the date to something legible
-    // Currently shows up as Mon Jun 06 2016 00:00:00 GMT-0700 (PDT)
+    var legibleDate = $scope.meal.date.toDateString();
     var data = ({
       userID: $scope.userOnRootScope.user_id,
       meal: $scope.meal.meal,
       restaurant: $scope.meal.restaurant,
       notes: $scope.meal.notes,
-      date: $scope.meal.date,
+      date: legibleDate,
       image: $scope.myCroppedImageUrl
     });
     $scope.addReview($scope.meals, data);
