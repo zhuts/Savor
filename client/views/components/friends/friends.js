@@ -19,7 +19,8 @@ angular.module('savor.friends',[
       users.forEach(function(currentUser) {
         var user = {
           username: currentUser.username,
-          userID: currentUser.userID
+          userID: currentUser.userID,
+          userAvatar: currentUser.userAvatar
         };
         friendList.push(user);
       });

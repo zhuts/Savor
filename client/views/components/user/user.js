@@ -38,6 +38,8 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
   
   var checkFriends = function(friendArray) {
     friendArray.forEach(function(currentFriend) {
+      // Can access the friend avatar by using currentFriend.userAvatar
+      // This could be passed in to the getAll and set up as the friendTag instead of the name
       getAll(currentFriend.userID, currentFriend.username);
     });
   };
