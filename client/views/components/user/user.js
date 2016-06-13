@@ -35,7 +35,6 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
       // We only want to check the friends of the current user
       if (!friendsChecked) {
         friendsChecked = true;
-        checkFriends(res.data.friends);
       }
     });
   }
