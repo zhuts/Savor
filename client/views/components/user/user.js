@@ -12,32 +12,26 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
   
   // Set to false at first so that we only get the current user's friends
   // not friends of friends
-  var friends;
   var friendsChecked = false;
-  // mealOptions will be an array of arrays
-  // mealOptions[0] will be the current user's meals
-  // any other things added will be the user's friends' meals
-  // $scope.mealOptions = [];
+
   function getAll(id, friendTag) {
     $http.get('/api/users/' + id).then(function(res) {
       var mealsList = res.data.meals;
-      
+
       // Adds a tag to our friends' meal options so that we can pull their nickname
       if (friendTag) {
         mealsList.forEach(function(currentMeal) {
           currentMeal.friendTag = friendTag;
         });
       }
-      // Pushes all of our lists to the mealOptions
-      $scope.mealOptions.push(mealsList);
       
-      console.log('friends ', res.data.friends);
+      Meals.updateMeals(mealsList);
+      
+      // We only want to check the friends of the current user
       if (!friendsChecked) {
         friendsChecked = true;
         checkFriends(res.data.friends);
       }
-      
-      Meals.updateMeals();
     });
   }
   getAll($scope.userOnRootScope.user_id);
@@ -47,6 +41,8 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
       getAll(currentFriend.userID, currentFriend.username);
     });
   };
+  
+  
   
 })
 
@@ -58,12 +54,19 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
     meals.push(newMeal);
   };
   
-  var updateMeals = function() {
-    mealOptions.forEach(function(currentValue) {
-      currentValue.forEach(function(currentMeal) {
-        meals.push(currentMeal);
-      });
+  var updateMeals = function(array) {
+    array.forEach(function(meal) {
+      meals.push(meal);
     });
+    
+    
+    // mealOptions.forEach(function(currentValue) {
+    //   currentValue.forEach(function(currentMeal) {
+    //     console.log('meals ', meals);
+    //     console.log('currentMeal ', currentMeal);
+    //     meals.push(currentMeal);
+    //   });
+    // });
   };
 
   return {
