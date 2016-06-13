@@ -81,7 +81,7 @@ var cleanThisLogoUp = function() {
   var stri = 0;  
   var block = "";
   var $block = $('<svg height="40px" width="40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"></svg>');
-    $('body').append($block);
+  $('body').append($block);
   var fixed = "";
 
   //Call self x times, whole function wrapped in setTimeout

@@ -42,7 +42,7 @@ module.exports = {
   
   addMealToUser: function(mealObject, callback) {
     var id = mealObject.userID;
-    User.update({userID: id}, {$push: {"meals": mealObject}}, function(err, foundUser) {
+    User.update({userID: id}, {$addToSet: {"meals": mealObject}}, function(err, foundUser) {
       if (foundUser) {
         callback(foundUser);
       } else {
@@ -54,7 +54,7 @@ module.exports = {
   },
   
   addFriendToUser: function(id, friend, callback) {
-    User.update({userID: id}, {$push: {"friends": friend}}, function(err, foundUser) {
+    User.update({userID: id}, {$addToSet: {"friends": friend}}, function(err, foundUser) {
       if (foundUser) {
         callback(foundUser);
       } else {
