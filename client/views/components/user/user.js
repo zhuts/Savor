@@ -6,11 +6,26 @@ underscore.factory('_', function() {
 angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'underscore'])
 
 .controller('userCtrl', function($scope, $http, _, Meals, masonryGrid) {
+  $scope.gridLoaded = false;
 
-  $scope.$on('ngRepeatFinished', function (temp) {
-    console.log('ngrepeat finished');
-    masonryGrid.instantiateMasonryGrid();
+  console.log('user controller loaded');
+
+  $scope.$on('ngRepeatFinished', function (element, test, test2) {
+    console.log('NG REPEAT FINISHED');
+    // masonryGrid.instantiateMasonryGrid();
+    if (!$scope.gridLoaded) {
+      console.log('first ngrepeat finished');
+      masonryGrid.instantiateMasonryGrid();
+      $scope.gridLoaded = true;
+    } else {
+      console.log('new item update ngrepeat finished');
+      masonryGrid.updateMasonryGrid(test);
+      // .masonry( 'appended', elem )
+      // masonryGrid.updateMasonryGrid();
+    }
+    console.log(test);
   });
+
   angular.extend($scope, Meals);
 
   $scope.profile = JSON.parse(localStorage.getItem('profile'));
@@ -31,11 +46,13 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
       }
       
       Meals.updateMeals(mealsList);
+      // masonryGrid.updateMasonryGrid();
       
       // We only want to check the friends of the current user
       if (!friendsChecked) {
         friendsChecked = true;
-      }
+        checkFriends(res.data.friends);
+      } 
     });
   }
   
@@ -92,7 +109,7 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
         restrict: 'A',
         link: function (scope, element, attr) {
             if (scope.$last) {
-                $rootScope.$broadcast("ngRepeatFinished", { temp: "some value" });
+                $rootScope.$broadcast("ngRepeatFinished", element, scope, attr);
             }
         }
     };
@@ -119,9 +136,11 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
 })
 
 .factory('masonryGrid', function() {
+  var $grid = null;
+
   // Assign masonry grid functionality
   var instantiateMasonryGrid = function() {
-    var $grid = $('.grid').masonry({
+    $grid = $('.grid').masonry({
       itemSelector: '.grid-item',
       columnWidth: 250
     });
@@ -134,7 +153,13 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
     });
   }
 
+  var updateMasonryGrid = function(elem) {
+    $grid.masonry( 'appended', elem );
+    // $grid.masonry();
+  }
+
   return {
-    instantiateMasonryGrid: instantiateMasonryGrid
+    instantiateMasonryGrid: instantiateMasonryGrid,
+    updateMasonryGrid: updateMasonryGrid
   };
 });

@@ -1,7 +1,6 @@
 <div ng-app="app" ng-controller="reviewCtrl" layout="column" layout-padding="" ng-cloak="">
-
+<h1>Log your meal</h1>
   <md-content class="md-no-momentum">
-
     <md-input-container class="md-icon-float md-block">
       <md-icon><i class="material-icons" class="name"></i></md-icon>
       <input ng-model="meal.restaurant" type="text" placeholder="Restaurant">
@@ -39,8 +38,6 @@
           <div><img ng-src="{{myCroppedImage}}" /></div>
         </div>
     </div>
-    <md-button class="md-warn md-raised md-hue-2" ng-click="upload()">SUBMIT!</md-button>
-
   </div>
-
+  <md-button class="md-warn md-raised md-hue-2" ng-click="upload()">SUBMIT!</md-button>
 </div>

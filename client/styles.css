@@ -44,25 +44,36 @@ table {
   border-spacing: 0;
 }*/*
 /** end of css reset **/
+/*
+@media only screen and (min-device-width: 100px) and (max-device-width: 1024px) {
+  .grid {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 0px!important;
+  }
+}*/
+
 html {
   background-color: #E99D7C; 
 }
 #output{
   position: absolute;
-  z-index: 10002;
   top: 0;
   left: 0;
-  text-transform:uppercase;
+  font-family: 'Work Sans', sans-serif!important;
+  font: 'Work Sans', sans-serif!important;
+  text-transform:lowercase;
   color:#fdf6f0;
-  font-size:3em;
+  font-size: 2.5em;
   font-weight:bold;
   text-align:left;
   text-shadow:0.08em 0em #940f08;
+  padding-left: 5px;
 }
 
 svg {
-  height: 75px;
-  width: 75px;
+  height: 50px;
+  width: 50px;
   position: absolute;
   padding-left: 15px;
 }
@@ -78,8 +89,8 @@ svg path {
 
 .crop-area {
   overflow: hidden;
-  width: 405px;
-  height: 250px;
+  width: 455px;
+  height: 285px;
   float: left;
   background-color: #E4E4E4;
   padding: 20px 10px 30px 10px;
@@ -100,13 +111,13 @@ svg path {
 }
 
 .cropped-area img {
-  height: 223px;
+  height: 200px;
 }
 
 .crop-container {
   width: 100%;
   margin: 0 auto;
-  display: inline-block;
+  /*display: inline-block;*/
 }
 
 .crop-label {
@@ -117,13 +128,17 @@ svg path {
   width: 100%;
   height: 100vh;
   /*background: url(https://s3-us-west-2.amazonaws.com/savorapp/bg-placeholder.png) no-repeat center center fixed; */
-  background: url(https://s3-us-west-2.amazonaws.com/savorapp/bg-1.png) no-repeat center center fixed;
+  background: url(https://s3-us-west-2.amazonaws.com/savorapp/bg-2.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   background-repeat: repeat-y;
   animation: animatedBackground 50s linear infinite;
+}
+
+#a0-lock .a0-overlay {
+  background: rgba(0,0,0,0.01)!important;
 }
 
 html {
@@ -193,7 +208,7 @@ h2 {
   vertical-align:bottom;
 }
 
-.logo {
+/*.logo {
   width: 95px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 2.1em;
@@ -209,7 +224,7 @@ h2 {
   text-align: center;
   color: white;
   vertical-align:bottom;
-}
+}*/
 
 .userToolbarPhoto {
   width: 45px;
@@ -511,6 +526,7 @@ p {
 .grid {
   width: 100%;
   margin: 0 auto;
+  /*padding-left: 50px;*/
 }
 
 /* clearfix */
@@ -533,6 +549,7 @@ p {
 
 .meal-header {
   position: relative;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .meal-avatar {
@@ -551,6 +568,10 @@ p {
 
 .grid-item .meal-title {
   font-size: 10px;
+  position: absolute;
+  left:0;
+  bottom:0;
+  padding: 5px;
 }
 
 .grid-item .meal-restaurant {
@@ -560,12 +581,17 @@ p {
   padding: 10px;
   color: #fff;
   text-transform: uppercase;
+  text-shadow: 2px 2px 2px #000;
   font-size: 15px;
   top: 0; 
 }
 
 .grid-item .meal-date {
   font-size: 8px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
 }
 
 
@@ -602,5 +628,6 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   background-color: #e5e5e5; 
 }
