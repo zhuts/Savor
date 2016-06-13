@@ -21,11 +21,11 @@ setTimeout(function () {
   if (--i){
     rustle(i); 
   } else {
-    // $block.empty();
-    $block = $('.plate');
-    $block.css('position', 'absolute'); 
-    $block.css('width', '50px');
-    $block.css('margin-top', '35px');  
+    $block.empty();
+    // $block = $('.plate');
+    // $block.css('position', 'absolute'); 
+    // $block.css('width', '50px');
+    // $block.css('margin-top', '35px');  
     
     
     

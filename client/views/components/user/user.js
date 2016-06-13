@@ -3,9 +3,12 @@ underscore.factory('_', function() {
   return window._; //Underscore must already be loaded on the page
 });
 
-angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'underscore', 'wu.masonry'])
+angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'underscore'])
 
-.controller('userCtrl', function($scope, $http, _, Meals) {
+.controller('userCtrl', function($scope, $http, _, Meals, masonryGrid) {
+  // Instantiate masonry grid which will attach functionality
+  // to the grid element in user.html
+  masonryGrid.instantiateMasonryGrid();
   angular.extend($scope, Meals);
 
   $scope.profile = JSON.parse(localStorage.getItem('profile'));
@@ -43,9 +46,11 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
       getAll(currentFriend.userID, currentFriend.username);
     });
   };
-  
-  
-  
+
+
+  // *********** TODO **************
+  // Create a getAllFriends function that will query the db for all of a users friends 
+  // Utilize the friends variable
 })
 
 .factory('Meals', function() {
@@ -77,5 +82,69 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
     addMeal: addMeal,
     updateMeals: updateMeals
   };
-});
+})
 
+.factory('masonryGrid', function() {
+  // Assign masonry grid functionality
+  var instantiateMasonryGrid = function() {
+    var $grid = $('.grid').masonry({
+      itemSelector: '.grid-item',
+      columnWidth: 250
+    });
+
+    // Attach event listener to the grid items in order to toggle its size
+    $grid.on( 'click', '.grid-item', function() {
+      $( this ).toggleClass('grid-item--gigante');
+      // Force masonry to refresh the grid and reflect updated layout
+      $grid.masonry();
+      // $grid.masonry('layout');
+    });
+  }
+
+  // Not currently usinsg this.. saving if we need for later
+  var updateMasonryGrid = function() {
+    // $('.grid').masonry('reloadItems');
+    // BuildMasonry();
+  }
+
+  return {
+    instantiateMasonryGrid: instantiateMasonryGrid,
+    updateMasonryGrid: updateMasonryGrid
+  };
+})
+
+// Not currently using this, we MIGHT have to though
+// if ng-repeat complete's its cycle we wan't to notify
+// masonry that new items have been re-rendered and 
+// to update the masonry grid to reflect that.
+.directive('updateMasonryIfLast', function() {
+  return function(scope, element, attrs) {
+    console.log('last one in repeat', scope);
+    // $('.grid').masonry();
+  };
+})
+
+.directive("ngRandomClass", function () {
+  return function(scope, element) {
+    // Random classes for assigning different sizes to grid items
+    var classes = [
+      // 'grid-item--height1 grid-item--width1',
+      // 'grid-item--height2 grid-item--width2',
+      // 'grid-item--height3 grid-item--width3',
+      // 'grid-item--height4 grid-item--width4'
+      // 'grid-item--size1',
+      // 'grid-item--size2',
+      // 'grid-item--size3',
+      // 'grid-item--size4',
+      // 'grid-item--size5',
+    ];
+
+    // $(element).addClass(classes[Math.floor(Math.random() * classes.length)]);
+
+    // Currently, 70% chance a grid item will be assigned another class to change its size
+    if (Math.random() > 0.3) {
+      // Assign a random class size to the current ng-repeat grid-item
+      // $(element).addClass(classes[Math.floor(Math.random() * classes.length)]);
+    }
+  }
+});

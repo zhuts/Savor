@@ -1,13 +1,14 @@
-<md-content masonry class='md-padding' layout="row" layout-wrap>
-  <div class="masonry-brick" ng-repeat="meal in meals | filter: searchMeals track by $index">
-	  <md-card>
-	    <img ng-src="{{meal.image}}">
-	    <md-card-content>
-	      <h2>{{meal.meal}}</h2>
-	      <p>{{meal.restaurant}}</p>
-	      <p>{{meal.date}}</p>
-	      <p ng-if="meal.friendTag">{{meal.friendTag}}</p>
-	    </md-card-content>
-	  </md-card>
-	 </div>
-</md-content>
+<div class="grid" masonry>
+  <div class="masonry-brick" ng-repeat="meal in meals">  
+    <div class="grid-item">
+        <div class="meal-header">
+          <img class="meal-avatar" ng-src="{{ userOnRootScope.picture }}">
+          <img class="meal-img" ng-src="{{meal.image}}">
+          <span class="meal-restaurant">{{meal.restaurant}}</span>
+        </div>
+        <span class="meal-title">{{meal.meal}}</span>
+        <span class="meal-date">{{meal.date}}</span>
+      </div>
+    </div>
+  </div>
+</div>
