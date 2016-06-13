@@ -28,4 +28,13 @@ function toolbarController(auth, store, $location, ngDialog, $scope, $rootScope,
         className: 'ngdialog-theme-default dialogwidth800'
       });
     };
+    
+    // For opening to friends section
+    $scope.openFriendsList = function() {
+      ngDialog.open({template: '/views/components/friends/friends.html',
+        controller: 'friendsController',
+        scope: $scope,
+        className: 'ngdialog-theme-default dialogwidth800'
+      });
+    };
 }
