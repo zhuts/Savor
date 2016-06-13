@@ -3,10 +3,15 @@
   <md-content class="md-no-momentum"> 
     <md-input-container class="md-icon-float md-block" flex>
       <md-icon><i class="material-icons" class="name"></i>search</md-icon>
-      <input ng-model="searchUsers" type="text" placeholder="Search Users Here">
+      <input ng-model="searchUsers" type="text" placeholder="Search For Users Here">
     </md-input-container>
   </md-content>
   <div>
-    
+    <md-button
+      ng-click="addFriendToUser()"
+      aria-label={{user}}
+      ng-repeat="user in userList | filter: searchUsers track by $index">
+      {{user}}
+    </md-button>
   </div>
 </div>

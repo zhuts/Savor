@@ -6,10 +6,29 @@ angular.module('savor.friends',[
   'savor.user'])
 .controller('friendsController', function($scope, $http, ngDialog, Upload, $window, Reviews, Meals) {
   
+  var testList = [];
+  var getAllUsers = function() {
+    $http({
+      method: "GET",
+      url: '/api/users/'
+    }).then(function(response) {
+      // response.data is an array of all the users
+      // each user object we want to pull .username from
+      // an array of all of our user data
+      var users = response.data;
+      users.forEach(function(currentUser) {
+        testList.push(currentUser.username);
+      });
+      console.log('test here ', testList);
+    });
+  };
+  getAllUsers();
+  // console.log('this is the test ', test);
+  // $scope.userList = getAllUsers();
+$scope.userList = testList;
 
-  $scope.myImage='';
-  $scope.myCroppedImage='';
-  $scope.myCroppedImageUrl = '';
+// ****** DO THIS
+// addFriendToUser = function
   
   // *************** Check to ensure all the appropriate fields are here *****************
   $scope.newReview = function(){
