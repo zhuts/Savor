@@ -8,9 +8,9 @@
   </md-content>
   <div>
     <md-button
-      ng-click="addFriendToUser()"
-      aria-label={{user}}
-      ng-repeat="user in userList | filter: searchUsers track by $index">
+      ng-repeat="user in userList | filter: searchUsers track by $index"
+      ng-click="addFriendToUser(user)"
+      aria-label=user>
       {{user}}
     </md-button>
   </div>
