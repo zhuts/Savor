@@ -19,7 +19,6 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
   // any other things added will be the user's friends' meals
   // $scope.mealOptions = [];
   function getAll(id, friendTag) {
-    id = id || $scope.userOnRootScope.user_id;
     $http.get('/api/users/' + id).then(function(res) {
       var mealsList = res.data.meals;
       
@@ -29,8 +28,10 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
           currentMeal.friendTag = friendTag;
         });
       }
+      // Pushes all of our lists to the mealOptions
       $scope.mealOptions.push(mealsList);
       
+      console.log('friends ', res.data.friends);
       if (!friendsChecked) {
         friendsChecked = true;
         checkFriends(res.data.friends);
@@ -39,11 +40,11 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
       Meals.updateMeals();
     });
   }
-  getAll();
+  getAll($scope.userOnRootScope.user_id);
   
   var checkFriends = function(friendArray) {
     friendArray.forEach(function(currentFriend) {
-      getAll(currentFriend, currentFriend);
+      getAll(currentFriend.userID, currentFriend.username);
     });
   };
   

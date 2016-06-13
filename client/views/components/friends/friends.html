@@ -11,7 +11,7 @@
       ng-repeat="user in userList | filter: searchUsers track by $index"
       ng-click="addFriendToUser(user)"
       aria-label=user>
-      {{user}}
+      {{user.username}}
     </md-button>
   </div>
 </div>
