@@ -6,8 +6,11 @@ underscore.factory('_', function() {
 angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'underscore'])
 
 .controller('userCtrl', function($scope, $http, _, Meals, masonryGrid) {
+<<<<<<< a4307390b9e83c9e1e0ca12cfb71447264a89e2a
   // Instantiate masonry grid which will attach functionality
   // to the grid element in user.html
+=======
+>>>>>>> (style/refactor) added style to user page and messed with masonry settings.
   masonryGrid.instantiateMasonryGrid();
   angular.extend($scope, Meals);
 
@@ -37,6 +40,7 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
       }
     });
   }
+<<<<<<< a4307390b9e83c9e1e0ca12cfb71447264a89e2a
   getAll($scope.userOnRootScope.user_id);
   
   var checkFriends = function(friendArray) {
@@ -47,6 +51,15 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
     });
   };
 
+=======
+  getAll();
+
+  angular.element(document).ready(function () {
+    // Instantiate masonry grid which will attach functionality
+    // to the grid element in user.html
+    // masonryGrid.instantiateMasonryGrid();
+  });
+>>>>>>> (style/refactor) added style to user page and messed with masonry settings.
 
   // *********** TODO **************
   // Create a getAllFriends function that will query the db for all of a users friends 
