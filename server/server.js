@@ -30,9 +30,9 @@ app.use(morgan('dev'));
 app.use(cors());
 
 var authCheck = jwt({
-  secret: new Buffer(authEnvironment.secret, 'base64'),
+  secret: new Buffer(process.env.AuthO_Secret, 'base64'),
   // audience is clientID
-  audience: authEnvironment.audience
+  audience: 'soUXI6OjMIep7IS2mPUgCxIrLgQF96Hy'
 });
 
 //stores the photo in the uploads directory.
