@@ -5,8 +5,7 @@ angular.module('savor.friends',[
   'ngDialog',
   'savor.user'])
 .controller('friendsController', function($scope, $http, ngDialog, Upload, $window, Reviews, Meals) {
-  angular.extend($scope, Reviews);
-  angular.extend($scope, Meals);
+  
 
   $scope.myImage='';
   $scope.myCroppedImage='';

@@ -1,46 +1,12 @@
-<div ng-app="app" ng-controller="reviewCtrl" layout="column" layout-padding="" ng-cloak="">
+<div ng-app="app" ng-controller="friendsController" layout="column" layout-padding="" ng-cloak="">
 
-  <md-content class="md-no-momentum">
-
-    <md-input-container class="md-icon-float md-block">
-      <md-icon><i class="material-icons" class="name"></i></md-icon>
-      <input ng-model="meal.restaurant" type="text" placeholder="Restaurant">
+  <md-content class="md-no-momentum"> 
+    <md-input-container class="md-icon-float md-block" flex>
+      <md-icon><i class="material-icons" class="name"></i>search</md-icon>
+      <input ng-model="searchUsers" type="text" placeholder="Search Users Here">
     </md-input-container>
-
-    <md-input-container class="md-icon-float md-block">
-      <md-icon><i class="material-icons" class="name"></i></md-icon>
-      <input ng-model="meal.meal" type="text" placeholder="Your meal in 10 words or less!" maxlength="100">
-    </md-input-container>
-
-    <md-datepicker ng-model="meal.date" md-placeholder="Enter date"></md-datepicker>
-    
-    <md-input-container md-no-float='' class="md-block">
-      <span>{{250 - meal.notes.length}} Characters remaining</span>
-      <md-icon><i class="material-icons" class="name"></i></md-icon>
-      <input ng-model="meal.notes" ng-trim="false" maxlength="250" type="text" placeholder="250 Characters"><br><br>
-    </md-input-container>
-
   </md-content>
-
-
-  <!-- <p ng-show="photoUploaded">{{picName}} uploaded!</p> -->
-  <div layout="row">
-    <!-- <img id="preview" src="">
-    <input name="file" type="file" file /> -->
-    <!-- <md-button class="md-buton md-raised md-primary" ng-click="upload()">UPLOAD PHOTO</md-button>
-    <md-button class="md-warn md-raised md-hue-2" ng-click="newReview()">SUBMIT!</md-button> -->
-    <div class="crop-container">
-      <div class="crop-area">
-        <div class="file-input">Select an image file: <input type="file" id="fileInput" /></div>
-          <img-crop image="myImage" result-image="myCroppedImage" area-type="square"></img-crop>
-        </div>
-        <div class="cropped-area">
-          <div class="crop-label">Cropped Image:</div>
-          <div><img ng-src="{{myCroppedImage}}" /></div>
-        </div>
-    </div>
-    <md-button class="md-warn md-raised md-hue-2" ng-click="upload()">SUBMIT!</md-button>
-
+  <div>
+    
   </div>
-
 </div>
