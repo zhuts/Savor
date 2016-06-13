@@ -4,6 +4,7 @@ angular.module('savor', [
   'savor.profile',
   'savor.user',
   'savor.login',
+  'savor.friends',
   'auth0',
   'angular-storage',
   'angular-jwt',
@@ -64,14 +65,19 @@ angular.module('savor', [
     // templateUrl: '/views/components/user/user.tpl.html',
     templateUrl: '/views/components/user/user.html',
     // controller: 'userController',
-    controller: 'userCtrl',
+    controller: 'userCtrl'
   })
   .state('review', {
     url: '/review',
     // templateUrl: '/views/components/review/review.tpl.html',
     templateUrl: '/views/components/review/review.html',
     // controller: 'reviewController',
-    controller: 'reviewCtrl',
+    controller: 'reviewCtrl'
+  })
+  .state('friends', {
+    url:'/friends',
+    templateURL: '/views/components/friends/friends.html',
+    controller:'friendsController'
   })
   .state('/', {
     url: '/',

@@ -10,31 +10,72 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
 
   $scope.profile = JSON.parse(localStorage.getItem('profile'));
   
-  var friends;
-  function getAll(id) {
-    id = id || $scope.userOnRootScope.user_id;
+  // Set to false at first so that we only get the current user's friends
+  // not friends of friends
+  var friendsChecked = false;
+
+  function getAll(id, friendTag) {
     $http.get('/api/users/' + id).then(function(res) {
-      $scope.meals = res.data.meals;
-      friends = res.data.friends;
+      var mealsList = res.data.meals;
+
+      // Adds a tag to our friends' meal options so that we can pull their nickname
+      if (friendTag) {
+        mealsList.forEach(function(currentMeal) {
+          currentMeal.friendTag = friendTag;
+        });
+      }
+      
+      Meals.updateMeals(mealsList);
+      
+      // We only want to check the friends of the current user
+      if (!friendsChecked) {
+        friendsChecked = true;
+        checkFriends(res.data.friends);
+      }
     });
   }
-  getAll();
+  getAll($scope.userOnRootScope.user_id);
   
-  // *********** TODO **************
-  // Create a getAllFriends function that will query the db for all of a users friends 
-  // Utilize the friends variable
+  var checkFriends = function(friendArray) {
+    friendArray.forEach(function(currentFriend) {
+      // Can access the friend avatar by using currentFriend.userAvatar
+      // This could be passed in to the getAll and set up as the friendTag instead of the name
+      getAll(currentFriend.userID, currentFriend.username);
+    });
+  };
+  
+  
+  
 })
 
 .factory('Meals', function() {
   var meals = [];
+  var mealOptions = [];
 
   var addMeal = function(newMeal){
     meals.push(newMeal);
   };
+  
+  var updateMeals = function(array) {
+    array.forEach(function(meal) {
+      meals.push(meal);
+    });
+    
+    
+    // mealOptions.forEach(function(currentValue) {
+    //   currentValue.forEach(function(currentMeal) {
+    //     console.log('meals ', meals);
+    //     console.log('currentMeal ', currentMeal);
+    //     meals.push(currentMeal);
+    //   });
+    // });
+  };
 
   return {
     meals: meals,
-    addMeal: addMeal
+    mealOptions: mealOptions,
+    addMeal: addMeal,
+    updateMeals: updateMeals
   };
 });
 

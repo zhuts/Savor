@@ -1,11 +1,12 @@
 <md-content masonry class='md-padding' layout="row" layout-wrap>
-  <div class="masonry-brick" ng-repeat="meal in meals">
+  <div class="masonry-brick" ng-repeat="meal in meals | filter: searchMeals track by $index">
 	  <md-card>
 	    <img ng-src="{{meal.image}}">
 	    <md-card-content>
 	      <h2>{{meal.meal}}</h2>
 	      <p>{{meal.restaurant}}</p>
 	      <p>{{meal.date}}</p>
+	      <p ng-if="meal.friendTag">{{meal.friendTag}}</p>
 	    </md-card-content>
 	  </md-card>
 	 </div>
