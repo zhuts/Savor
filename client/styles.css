@@ -123,7 +123,7 @@ svg path {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: repeat-y;
-  animation: animatedBackground 25s linear infinite;
+  animation: animatedBackground 50s linear infinite;
 }
 
 html {
@@ -527,7 +527,7 @@ p {
   height: 300px;
   float: left!important;
   box-sizing: border-box;
-  border: 5px #E99D7C solid;
+  border: 5px #e5e5e5 solid;
   background: #fff;
 }
 
@@ -598,9 +598,9 @@ p {
 }
 
 html {
-  background-color: #E99D7C;
+  background-color: #e5e5e5;
 }
 
 body {
-  background-color: #E99D7C; 
+  background-color: #e5e5e5; 
 }
