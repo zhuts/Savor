@@ -22,7 +22,6 @@ angular.module('savor.friends',[
           userID: currentUser.userID,
           userAvatar: currentUser.userAvatar
         };
-        
         if (user.userID !== $scope.userOnRootScope.user_id) {
           friendList.push(user);
         }

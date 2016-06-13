@@ -59,7 +59,7 @@ module.exports = {
         callback(foundUser);
       } else {
         console.log('There was an error');
-        callback(foundUser);
+        callback(err, user);
       }
     });
    }
