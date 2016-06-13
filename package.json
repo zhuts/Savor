@@ -20,11 +20,11 @@
     "postinstall": "bower install"
   },
   "dependencies": {
-    "aws-sdk": "^2.3.18",
-    "body-parser": "^1.4.3",
-    "bower": "^1.7.9",
+    "aws-sdk": "2.3.18",
+    "body-parser": "1.4.3",
+    "bower": "1.7.9",
     "cors": "2.7.1",
-    "express": "^4.4.5",
+    "express": "4.4.5",
     "express-jwt": "3.4.0",
     "fs": "0.0.2",
     "gulp": "3.9.1",
@@ -33,12 +33,12 @@
     "gulp-uglify": "1.5.3",
     "jshint": "2.9.2",
     "jshint-stylish": "2.2.0",
-    "mongojs": "^2.4.0",
+    "mongojs": "2.4.0",
     "mongoose": "4.4.19",
-    "morgan": "^1.1.1",
+    "morgan": "1.1.1",
     "multer": "1.1.0",
-    "nodemon": "^1.2.1",
-    "request": "^2.36.0",
-    "underscore": "^1.8.3"
+    "nodemon": "1.2.1",
+    "request": "2.36.0",
+    "underscore": "1.8.3"
   }
 }

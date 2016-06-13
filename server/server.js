@@ -8,7 +8,7 @@ var multer = require('multer');
 var bodyParser = require('body-parser');
 var userController = require('./db/controllers/userController.js');
 
-var authEnvironment = require('./authEnvironment.js');
+// var authEnvironment = require('./authEnvironment.js');
 
 var port = process.env.PORT || 4000;
 
