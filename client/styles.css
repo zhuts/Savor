@@ -1,6 +1,6 @@
 
 /* CSS reset */
-html, body, div, span, applet, object, iframe,
+/*html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -21,7 +21,7 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+/*article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
@@ -42,8 +42,39 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
+}*/*
 /** end of css reset **/
+html {
+  background-color: #E99D7C; 
+}
+#output{
+  position: absolute;
+  z-index: 10002;
+  top: 0;
+  left: 0;
+  text-transform:uppercase;
+  color:#fdf6f0;
+  font-size:3em;
+  font-weight:bold;
+  text-align:left;
+  text-shadow:0.08em 0em #940f08;
+}
+
+svg {
+  height: 75px;
+  width: 75px;
+  position: absolute;
+  padding-left: 15px;
+}
+
+svg path {
+  fill: #fff;
+  /*fill: #940f08;*/
+}
+
+.hidden { 
+  display: none;
+}
 
 .crop-area {
   overflow: hidden;
@@ -85,16 +116,18 @@ table {
 .loginBackground {
   width: 100%;
   height: 100vh;
-  background: url(https://s3-us-west-2.amazonaws.com/savorapp/bg-placeholder.png) no-repeat center center fixed; 
+  /*background: url(https://s3-us-west-2.amazonaws.com/savorapp/bg-placeholder.png) no-repeat center center fixed; */
+  background: url(https://s3-us-west-2.amazonaws.com/savorapp/bg-1.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   background-repeat: repeat-y;
-  animation: animatedBackground 25s linear infinite;
+  animation: animatedBackground 50s linear infinite;
 }
 
-html { 
+html {
+height: 100%; 
   overflow-y: scroll; 
 }
 
@@ -182,6 +215,7 @@ h2 {
   width: 45px;
   height: 45px;
   padding: .1em 0;
+  border-radius: 20px;
   color: #444;
   position: relative;
   overflow: hidden;
@@ -356,8 +390,12 @@ p {
 }
 
 .themer {
-  background-color: #3f51b5;
+  position: fixed;
+  background-color: #CE7F59;
   height: 80px;
+  -moz-box-shadow: 0px 5px 5px rgba(68,68,68,0.6);
+  -webkit-box-shadow: 0px 5px 5px rgba(68,68,68,0.6);
+  box-shadow: 0px 5px 5px rgba(68,68,68,0.6);
 }
 
 .ngdialog.dialogwidth800 .ngdialog-content{width : 800px;}
@@ -414,7 +452,7 @@ p {
   font-size: 14px;
 }
 
-.grid {
+/*.grid {
     border: solid 1px #ccc padding: 10px 10px 0 0;
 }
 .grid li {
@@ -424,7 +462,7 @@ p {
     border: solid 1px #ccc;
     margin: 0 0 10px 10px;
     background: #eee;
-}
+}*/
 
 .md-datepicker-calendar-pane {
  z-index: 10001!important;
@@ -460,4 +498,109 @@ p {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
+}
+
+/*.masonry-brick {
+  display: block;
+  margin: 15px;
+}*/
+
+
+/* Masonry grid */
+
+.grid {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-item {
+  width: 250px;
+  height: 300px;
+  float: left!important;
+  box-sizing: border-box;
+  border: 5px #e5e5e5 solid;
+  background: #fff;
+}
+
+.meal-header {
+  position: relative;
+}
+
+.meal-avatar {
+  position: absolute;
+  box-sizing: border-box;
+  border: 10px #fff solid;
+  width: 50px;
+  height: 50px;
+}
+
+.grid-item .meal-img { 
+   width: 100%;
+   box-sizing: border-box;
+   border: 10px #fff solid;
+}
+
+.grid-item .meal-title {
+  font-size: 10px;
+}
+
+.grid-item .meal-restaurant {
+  position: absolute;
+  font-family: 'Work Sans', sans-serif;
+  margin-left: 45px;
+  padding: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 15px;
+  top: 0; 
+}
+
+.grid-item .meal-date {
+  font-size: 8px;
+}
+
+
+.grid-item--width1 { width: 275px; }
+.grid-item--width2 { width: 300px; }
+.grid-item--width3 { width: 325px; }
+.grid-item--width4 { width: 400px; }
+
+.grid-item--height1 { height: 225px; }
+.grid-item--height2 { height: 350px; }
+.grid-item--height3 { height: 375px; }
+.grid-item--height4 { height: 450px; }
+
+/*.grid-item--size1 { width: 280px; height: 350px; }
+.grid-item--size2 { width: 430px; height: 550px; }
+*//*
+.grid-item--size2 { width: 200px; height: 250px; }
+.grid-item--size3 { width: 230px; height: 280px; }
+.grid-item--size4 { width: 260px; height: 310px; }
+.grid-item--size5 { width: 290px; height: 340px; }*/
+
+.grid-item--gigante {
+  width: 500px;
+  height: 550px;
+}
+
+.grid-item:hover {
+  background: #555;
+  cursor: pointer;
+}
+
+html {
+  background-color: #e5e5e5;
+}
+
+body {
+  background-color: #e5e5e5; 
 }

@@ -6,11 +6,6 @@
 
 </head>
 
-<body ng-app="savor" ng-controller="savorCtrl">
-  <!-- Display toolbar if the user is authenticated only -->
-  <toolbar ng-show="isUserReallyAuthenticated"></toolbar>
-  <div ui-view=''></div>
-
   <!-- Auth0's lock widget library -->
   <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
   <!-- Masonry -->
@@ -24,6 +19,9 @@
   <script src="bower_components/outlayer/outlayer.js"></script>
   <script src="bower_components/masonry/masonry.js"></script>
   <script src="bower_components/imagesloaded/imagesloaded.js"></script>
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,200' rel='stylesheet' type='text/css'>
 
   <!-- AngularJS -->
   <script src="bower_components/angular/angular.js"></script>
@@ -64,7 +62,7 @@
   <!-- Auth0's Viewport settings-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-  <!-- My CSS -->
+  <!-- My CSS -->           
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.css">
   <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.css">
@@ -90,10 +88,21 @@
 <!--   <script src="/views/components/user/user.dir.js"></script>
   <script src="/views/components/user/user.ctrl.js"></script> -->
   <script src="/views/components/user/user.js"></script>
+  <!-- <script src="http://masonry.desandro.com/masonry.pkgd.js"></script> -->
+  <script src="/views/lib/masonry.grid.js"></script>
   <script src="/views/components/login/login.ctrl.js"></script>
   <!-- Do we need this directive ********** -->
   <!-- <script src="/views/components/login/login.dir.js"></script> -->
   <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
+
+  <!-- Custom logo animation -->
+  <script src="/views/components/login/logo.js"></script>
+</head>
+
+<body ng-app="savor" ng-controller="savorCtrl">
+  <!-- Display toolbar if the user is authenticated only -->
+  <toolbar ng-show="isUserReallyAuthenticated"></toolbar>
+  <div ui-view=''></div>
 </body>
 </html>
