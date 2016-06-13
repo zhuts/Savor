@@ -30,7 +30,6 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
         });
       }
       $scope.mealOptions.push(mealsList);
-      // $scope.meals = res.data.meals;
       
       if (!friendsChecked) {
         friendsChecked = true;
@@ -44,22 +43,9 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
   
   var checkFriends = function(friendArray) {
     friendArray.forEach(function(currentFriend) {
-      console.log('inside the friend check ', $scope.mealOptions);
       getAll(currentFriend, currentFriend);
     });
   };
-  
-  // *********** TODO **************
-  // Create a getAllFriends function that will query the db for all of a users friends 
-  // Utilize the friends variable
-  
-  console.log('the full one ', $scope.mealOptions);
-  // $scope.mealOptions
-  // console.log('the full one ', $scope.mealOptions['0']);
-  // console.log('the $scope.meals ', $scope.meals);
-  // $scope.meals= mealOptions[0];
-  // mealOptions = [[{}, {}, {}], [{}, {}], [{}]]
-  // meals = mealOptions[0]
   
 })
 
