@@ -1,18 +1,11 @@
-<<<<<<< a4307390b9e83c9e1e0ca12cfb71447264a89e2a
+
 <div class="grid" masonry>
-  <div class="masonry-brick" ng-repeat="meal in meals">  
+  <div class="masonry-brick" ng-repeat="meal in meals" on-finish-render>  
     <div class="grid-item">
-=======
-<!-- <div masonry item-selector=".grid-item"> -->
-<div class="grid" masonry>
-	<div class="masonry-brick" ng-repeat="meal in meals">  
-		<div class="grid-item">
->>>>>>> (style/refactor) added style to user page and messed with masonry settings.
         <div class="meal-header">
           <img class="meal-avatar" ng-src="{{ userOnRootScope.picture }}">
           <img class="meal-img" ng-src="{{meal.image}}">
           <span class="meal-restaurant">{{meal.restaurant}}</span>
-<<<<<<< a4307390b9e83c9e1e0ca12cfb71447264a89e2a
         </div>
         <span class="meal-title">{{meal.meal}}</span>
         <span class="meal-date">{{meal.date}}</span>
@@ -20,13 +13,3 @@
     </div>
   </div>
 </div>
-=======
-    		</div>
-        <span class="meal-title">{{meal.meal}}</span>
-    		<span class="meal-date">{{meal.date}}</span>
-      </div>
-    </div>
-	</div>
-</div>
-<!-- </div> -->
->>>>>>> (style/refactor) added style to user page and messed with masonry settings.

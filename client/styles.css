@@ -50,9 +50,11 @@ html {
 #output{
   position: absolute;
   z-index: 10002;
+  top: 0;
+  left: 0;
   text-transform:uppercase;
   color:#fdf6f0;
-  font-size:6em;
+  font-size:3em;
   font-weight:bold;
   text-align:left;
   text-shadow:0.08em 0em #940f08;
@@ -61,6 +63,7 @@ html {
 svg {
   height: 75px;
   width: 75px;
+  position: absolute;
   padding-left: 15px;
 }
 
@@ -507,6 +510,7 @@ p {
 
 .grid {
   width: 100%;
+  margin: 0 auto;
 }
 
 /* clearfix */
@@ -520,7 +524,7 @@ p {
 
 .grid-item {
   width: 250px;
-  height: 320px;
+  height: 300px;
   float: left!important;
   box-sizing: border-box;
   border: 5px #E99D7C solid;
@@ -565,16 +569,16 @@ p {
 }
 
 
-.grid-item--width1 { width: 170px; }
-/*.grid-item--width2 { width: 180px; }
-.grid-item--width3 { width: 190px; }
-.grid-item--width4 { width: 200px; }
-*/
-.grid-item--height1 { height: 220px; }
-/*.grid-item--height2 { height: 230px; }
-.grid-item--height3 { height: 240px; }
-.grid-item--height4 { height: 250px; }
-*/
+.grid-item--width1 { width: 275px; }
+.grid-item--width2 { width: 300px; }
+.grid-item--width3 { width: 325px; }
+.grid-item--width4 { width: 400px; }
+
+.grid-item--height1 { height: 225px; }
+.grid-item--height2 { height: 350px; }
+.grid-item--height3 { height: 375px; }
+.grid-item--height4 { height: 450px; }
+
 /*.grid-item--size1 { width: 280px; height: 350px; }
 .grid-item--size2 { width: 430px; height: 550px; }
 *//*
