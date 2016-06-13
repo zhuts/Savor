@@ -108,10 +108,9 @@ app.get('/api/users/:id', function(req, res) {
 // For logging in, will either create a user or just return the found user
 app.post('/api/users/', function(req, res) {
   var id = req.body.userID;
-  var email = req.body.email;
   var username = req.body.username;
   var userAvatar = req.body.userAvatar;
-  userController.checkOrCreateUser(id, email, username, userAvatar, function(user) {
+  userController.checkOrCreateUser(id, username, userAvatar, function(user) {
     res.status(201).send(user);
   });
 });
