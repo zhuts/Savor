@@ -1,6 +1,6 @@
 
 <div class="grid" masonry>
-  <div class="masonry-brick" ng-repeat="meal in meals" on-finish-render>  
+  <div class="masonry-brick" ng-repeat="meal in meals | filter: searchMeals" on-finish-render>  
     <div class="grid-item">
         <div class="meal-header">
           <img class="meal-avatar" ng-src="{{ userOnRootScope.picture }}">
