@@ -47,6 +47,8 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
       
       Meals.updateMeals(mealsList);
       // masonryGrid.updateMasonryGrid();
+
+      // console.log(Meals.meals);
       
       // We only want to check the friends of the current user
       if (!friendsChecked) {
