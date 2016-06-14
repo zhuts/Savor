@@ -60,18 +60,17 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
   
   var checkFriends = function(friendArray) {
     friendArray.forEach(function(currentFriend) {
-      // Can access the friend avatar by using currentFriend.userAvatar
-      // This could be passed in to the getAll and set up as the friendTag instead of the name
-      getAll(currentFriend.userID, currentFriend.username);
+      getAll(currentFriend.userID, currentFriend.userAvatar);
     });
   };
-
-
-  // getAll();
-
-  // *********** TODO **************
-  // Create a getAllFriends function that will query the db for all of a users friends 
-  // Utilize the friends variable
+  
+  $scope.getTileCardAvatar = function(meal) {
+    if (meal.friendTag) {
+      return meal.friendTag;
+    } else {
+      return $scope.userOnRootScope.picture;
+    }
+  };
 })
 
 .factory('Meals', function() {
