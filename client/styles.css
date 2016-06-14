@@ -540,7 +540,7 @@ p {
 
 .grid-item {
   width: 250px;
-  height: 300px;
+  height: 270px;
   float: left!important;
   box-sizing: border-box;
   border: 5px #e5e5e5 solid;
@@ -567,7 +567,7 @@ p {
 }
 
 .grid-item .meal-title {
-  font-size: 10px;
+  font-size: 15px;
   position: absolute;
   left:0;
   bottom:0;
@@ -618,8 +618,19 @@ p {
   height: 550px;
 }
 
+.grid-item--gigante .meal-title {
+  font-size: 40px!important;
+}
+
+.grid-item--gigante .meal-date {
+  font-size: 15px!important;
+}
+
+.grid-item--gigante .meal-restaurant {
+  font-size: 50px!important;
+}
+
 .grid-item:hover {
-  background: #555;
   cursor: pointer;
 }
 
@@ -630,4 +641,8 @@ html {
 body {
   overflow-x: hidden;
   background-color: #e5e5e5; 
+}
+
+md-input-container.md-icon-left {
+  margin-top: 50px;
 }
