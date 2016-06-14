@@ -3,7 +3,7 @@ underscore.factory('_', function() {
   return window._; //Underscore must already be loaded on the page
 });
 
-angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'underscore'])
+angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'underscore', 'savor.friends'])
 
 .controller('userCtrl', function($scope, $http, _, Meals, masonryGrid) {
   $scope.gridLoaded = false;
@@ -53,7 +53,7 @@ angular.module('savor.user',['ngMaterial', 'ngMessages', 'material.svgAssetsCach
       // We only want to check the friends of the current user
       if (!friendsChecked) {
         friendsChecked = true;
-        checkFriends(res.data.friends);
+        // checkFriends(res.data.friends);
       } 
     });
   }
